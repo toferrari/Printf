@@ -6,13 +6,13 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/01 21:48:37 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/02 17:31:24 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "include/ft_printf.h"
 #include <stdarg.h>
-#include "libft.h"
+#include "include/libft.h"
 
 static void	ft_flag(char ***format, t_print *s_ptf)
 {
@@ -67,9 +67,25 @@ static void	ft_length(char **format, t_print *s_ptf)
 		if ((*format)[i] == 'h')
 			s_ptf->h += 1;
 		if ((*format)[i] == 'L')
-			s_ptf->L += 1;
+			s_ptf->L = 1;
 		i++;
 	}
+	*format += i;
+	if (s_ptf->l % 2 == 0)
+		s_ptf->l = 2;
+	else
+		s_ptf->l = 1;
+	if (s_ptf->h % 2 == 0)
+		s_ptf->h = 2;
+	else
+		s_ptf->h = 1;
+}
+
+static void	ft_convert(char **format, t_print *s_ptf)
+{
+	if (ft_strnchr(*format, "sSpdDioOuUxXcC"))
+		s_ptf->c = *format[0];
+	*format += 1;
 }
 
 int			ft_parse_flag(char **format, va_list *arg)
@@ -86,6 +102,8 @@ int			ft_parse_flag(char **format, va_list *arg)
 	ft_flag(&format, &argument);
 	ft_accuracy(format, &argument);
 	ft_length(format, &argument);
+	ft_convert(format, &argument);
+	//ft_putstr(*format);
 	/*ft_putchar('\n');
 	ft_putstr("format = ");
 	ft_putstr(*format);

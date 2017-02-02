@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/01 17:45:37 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/02 17:05:55 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ typedef	struct	s_struct
 	int			space;
 	int			z;
 	int			j;
+	char		c;
 
 }				t_print;
 
 int			ft_parse_flag(char **format, va_list *arg);
+int		ft_realloc_adr2(char **str, int size);
 
 #endif

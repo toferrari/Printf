@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/01/27 16:46:47 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/02 17:24:21 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ void			ft_putnbrendl(int nb);
 char			*ft_realloc_chr(char *src, int size);
 int				ft_realloc_adr(char **str, int size);
 int				ft_putstrlen(const char *str);
+int				ft_strclen(char *str, char c);
+char			*ft_strccat(char *dest, char *src, char c);
+char			*ft_strnchr(const char *str, const char *find);
 
 
 #endif
