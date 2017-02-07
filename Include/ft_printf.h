@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/02 17:05:55 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/06 19:25:35 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@
 
 typedef	struct	s_struct
 {
-	char		*flag;
-	char		*len_flag;
-	char		out_ampl_flag;
 	int			bool_acc;
 	int			accuracy;
-	char		type_spec;
 	int			htag;
 	int			plus;
 	int			moins;
@@ -38,7 +34,10 @@ typedef	struct	s_struct
 
 }				t_print;
 
-int			ft_parse_flag(char **format, va_list *arg);
-int		ft_realloc_adr2(char **str, int size);
+void		ft_init_struct(t_print *s_ptf);
+int			ft_parse_flag(char **format, va_list *arg, char **str);
+int			ft_flag_d(t_print ptf, int nb, char **str);
+void		ft_strputnchr(char **str, char c, int n);
+
 
 #endif

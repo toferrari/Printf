@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/02 17:33:40 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/07 18:47:28 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 #include "include/libft.h"
 #include "include/ft_printf.h"
 
-int			ft_parse(char *format, va_list *arg, int ret, char **str)
+static int	ft_0_pourcent(char **str, int ret, char *format)
+{
+	int i;
+	int len;
+
+	i = 0;
+	len = ft_strlen(format);
+	ft_realloc_adr(str, len);
+	*str = ft_strcat(*str, format);
+	return (len);
+}
+
+static int	ft_parse(char *format, va_list *arg, int ret, char **str)
 {
 	int i;
 	char *find_percent;
@@ -24,30 +36,28 @@ int			ft_parse(char *format, va_list *arg, int ret, char **str)
 	if (*str == NULL)
 		*str = ft_strnew(1);
 	if (!(find_percent = ft_strchr(format, '%')))
-		return (ret += ft_putstrlen(format));
+		return (ret += ft_0_pourcent(str, ret, format));
 	if (format[i] != '%')
 	{
 		ft_realloc_adr(str, i = ft_strclen(format, '%'));
 		*str = ft_strccat(*str, format, '%');
-	//	ft_putendl(*str);
 	}
 	if (format[i] == '%' && format[i + 1] == '%')
 	{
 		ft_realloc_adr(str, 1);
 		*str = ft_strcat(*str, "%");
-		//ft_putendl(*str);
 		ret = ft_parse(format + (i + 2), arg, ret + 1, str);
 	}
 	else if (format[i] && format[i] == '%')
 	{
 		format += i + 1;
-		nb = ft_parse_flag(&format, arg);
+		nb = ft_parse_flag(&format, arg, str);
 		ret = ft_parse(format, arg, ret + nb, str);
 	}
 	return (ret);
 }
 
-static int		ft_printf(char *format, ...)
+int			ft_printf(char *format, ...)
 {
 	va_list	arg;
 	int ret;
@@ -55,7 +65,7 @@ static int		ft_printf(char *format, ...)
 
 	va_start(arg, format);
 	ret = ft_parse(format, &arg, 0, &str);
-	//ft_putstr(str);
+	ft_putendl(str);
 	return (ret);
 }
 
@@ -69,8 +79,8 @@ int main(void)
 
 	test = ft_strdup("salut tu vas bien?");
 
-    //i = printf("%d", l);
-	i = ft_printf("salut%%toi%-3058.5482lld");
+    //i = printf("%+.4d", l);
+	i = ft_printf("%30da", l);
 //	ft_putchar('\n');
 //	ft_putstrnbr("ret = ", i);
     return 0;

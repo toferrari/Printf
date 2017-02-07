@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/02 17:31:24 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/06 19:28:26 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,16 @@ static void	ft_length(char **format, t_print *s_ptf)
 	while ((*format)[i] && (((*format)[i] == 'l') || (*format)[i] == 'h' || (*format)[i] == 'L'))
 	{
 		if ((*format)[i] == 'l')
-			s_ptf->l += 1;
-		if ((*format)[i] == 'h')
-			s_ptf->h += 1;
-		if ((*format)[i] == 'L')
+			s_ptf->l++;
+		else if ((*format)[i] == 'h')
+			s_ptf->h++;
+		else if ((*format)[i] == 'L')
 			s_ptf->L = 1;
 		i++;
 	}
 	*format += i;
-	if (s_ptf->l % 2 == 0)
-		s_ptf->l = 2;
-	else
-		s_ptf->l = 1;
-	if (s_ptf->h % 2 == 0)
-		s_ptf->h = 2;
-	else
-		s_ptf->h = 1;
+	s_ptf->l = (s_ptf->l % 2 == 0) ? 2 : 1;
+	s_ptf->h = (s_ptf->h % 2 == 0) ? 2 : 1;
 }
 
 static void	ft_convert(char **format, t_print *s_ptf)
@@ -88,27 +82,19 @@ static void	ft_convert(char **format, t_print *s_ptf)
 	*format += 1;
 }
 
-int			ft_parse_flag(char **format, va_list *arg)
+int			ft_parse_flag(char **format, va_list *arg, char **str)
 {
 	t_print argument;
 	int len_flag;
 
 	len_flag = 0;
-	argument.zero = 0;
-	argument.accuracy = 0;
-	/*ft_putchar('\n');
-	ft_putstr(*format);*/
-	//ft_putendl("passe av");
+	ft_bzero(&argument, sizeof(argument));
 	ft_flag(&format, &argument);
 	ft_accuracy(format, &argument);
 	ft_length(format, &argument);
 	ft_convert(format, &argument);
-	//ft_putstr(*format);
-	/*ft_putchar('\n');
-	ft_putstr("format = ");
-	ft_putstr(*format);
-	ft_putchar('\n');*/
-	//ft_putstrnbr("len = ", len_flag);
-	//ft_putendl("passe ap");
+	if (argument.c == 'd')
+		return (ft_flag_d(argument, va_arg(*arg, int), str));
+
 	return (len_flag);
 }
