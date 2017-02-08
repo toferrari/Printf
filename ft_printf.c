@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/08 15:03:25 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/08 18:28:49 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@ static int	ft_parse(char *format, va_list *arg, int ret, char **str)
 		ft_realloc_adr(str, i = ft_strclen(format, '%'));
 		*str = ft_strccat(*str, format, '%');
 	}
-	if (format[i] == '%' && format[i + 1] == '%')
-	{
-		ft_realloc_adr(str, 1);
-		*str = ft_strcat(*str, "%");
-		ret = ft_parse(format + (i + 2), arg, ret + 1, str);
-	}
 	else if (format[i] && format[i] == '%')
 	{
 		format += i + 1;
@@ -66,6 +60,7 @@ int			ft_printf(char *format, ...)
 	va_start(arg, format);
 	ret = ft_parse(format, &arg, 0, &str);
 	ft_putendl(str);
+	va_end(arg);
 	return (ret);
 }
 
@@ -79,8 +74,8 @@ int main(void)
 
 	test = ft_strdup("salut tu vas bien?");
 
-    i = printf("%30ds%%", l);
-	i = ft_printf("%30ds%%", l);
+    i = printf("%b");
+	i = ft_printf("%%", l);
 //	ft_putchar('\n');
 //	ft_putstrnbr("ret = ", i);
     return 0;

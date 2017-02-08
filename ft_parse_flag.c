@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/06 19:28:26 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/08 18:29:24 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	ft_length(char **format, t_print *s_ptf)
 
 static void	ft_convert(char **format, t_print *s_ptf)
 {
-	if (ft_strnchr(*format, "sSpdDioOuUxXcC"))
+	if (ft_strchr("sSpdDioOuUxXcCeEfFgGaAnbrk%", *format[0]))
 		s_ptf->c = *format[0];
 	*format += 1;
 }
@@ -92,6 +92,7 @@ int			ft_parse_flag(char **format, va_list *arg, char **str)
 	ft_flag(&format, &argument);
 	ft_accuracy(format, &argument);
 	ft_length(format, &argument);
+	ft_flag(&format, &argument);
 	ft_convert(format, &argument);
 	if (argument.c == 'd')
 		return (ft_flag_d(argument, va_arg(*arg, int), str));
