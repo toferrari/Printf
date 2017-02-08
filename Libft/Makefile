@@ -66,7 +66,11 @@ SRC =	ft_memset.c \
 		ft_putstrnbr.c \
 		ft_putnbrendl.c \
 		ft_realloc_chr.c \
-		ft_realloc_adr.c
+		ft_realloc_adr.c \
+		ft_strclen.c \
+		ft_strccat.c \
+		ft_strnchr.c \
+		ft_strputnchr.c
 
 PT_O =	ft_memset.o \
 		ft_bzero.o \
@@ -134,7 +138,11 @@ PT_O =	ft_memset.o \
 		ft_putstrnbr.o \
 		ft_putnbrendl.o \
 		ft_realloc_chr.o \
-		ft_realloc_adr.o
+		ft_realloc_adr.o \
+		ft_strclen.o \
+		ft_strccat.o \
+		ft_strnchr.o \
+		ft_strputnchr.o
 
 all: $(NAME)
 

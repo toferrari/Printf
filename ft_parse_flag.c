@@ -12,7 +12,7 @@
 
 #include "include/ft_printf.h"
 #include <stdarg.h>
-#include "include/libft.h"
+#include "libft.h"
 
 static void	ft_flag(char ***format, t_print *s_ptf)
 {

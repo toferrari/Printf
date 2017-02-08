@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "include/ft_printf.h"
-#include "include/libft.h"
+#include "libft.h"
 
 int		ft_flag_d(t_print ptf, int nb, char **str)
 {

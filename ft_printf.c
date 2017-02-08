@@ -6,12 +6,12 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/07 18:47:28 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/08 15:03:25 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "include/libft.h"
+#include "libft.h"
 #include "include/ft_printf.h"
 
 static int	ft_0_pourcent(char **str, int ret, char *format)
@@ -79,8 +79,8 @@ int main(void)
 
 	test = ft_strdup("salut tu vas bien?");
 
-    //i = printf("%+.4d", l);
-	i = ft_printf("%30da", l);
+    i = printf("%30ds%%", l);
+	i = ft_printf("%30ds%%", l);
 //	ft_putchar('\n');
 //	ft_putstrnbr("ret = ", i);
     return 0;
