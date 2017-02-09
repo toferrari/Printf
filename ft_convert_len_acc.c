@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_call_arg.c                                      :+:      :+:    :+:   */
+/*   ft_convert_len_acc.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/08 18:31:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/09 16:33:24 by tferrari         ###   ########.fr       */
+/*   Created: 2017/02/09 11:08:31 by tferrari          #+#    #+#             */
+/*   Updated: 2017/02/09 17:39:45 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "include/ft_printf.h"
 #include "libft.h"
 
-int		ft_call_arg(va_list *arg, char **str, t_print ptf)
+int		ft_convert_len_acc(char **str, t_print ptf, unsigned long long nb)
 {
-	if (ft_strchr("d", ptf.c))
-		return (ft_flag_d(ptf, va_arg(*arg, int), str));
-	/*if (ft_strchr("sS", ptf.c))
-		return (ft_flag_char(arg, va_arg(*arg, int), str));*/
-	return (0);
+	int len;
+
+	len = ft_intlen(nb);
+	if (ptf.zero > len || ptf.accuracy > len)
+		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
+	if (ptf.space == 1 || ptf.plus == 1)
+		len++;
+	return (len);
 }

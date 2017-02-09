@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/08 18:28:49 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/09 17:40:06 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,20 @@ int			ft_printf(char *format, ...)
 int main(void)
 {
 	int i;
-	int l = 170;
+	int l = 99;
+	uintmax_t l2;
+	float f = 10.2;
+	unsigned long long h = 1407346244594160000;
 	char *test;
 	i = 0;
 	char c = '9';
 
 	test = ft_strdup("salut tu vas bien?");
 
-    i = printf("%b");
-	i = ft_printf("%%", l);
+    //i = printf("%1.1d\n", l);
+	//i = printf("%9.10d", l);
+	i = ft_printf("%2.1d", l);
+	ft_putnbr(i);
 //	ft_putchar('\n');
 //	ft_putstrnbr("ret = ", i);
     return 0;
