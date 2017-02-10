@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_intlen_intmax.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/10 16:04:21 by tferrari         ###   ########.fr       */
+/*   Created: 2017/02/10 14:19:31 by tferrari          #+#    #+#             */
+/*   Updated: 2017/02/10 16:39:15 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+int		ft_intlen_intmax(int64_t n)
 {
-	int				len;
-	unsigned int	nb;
-	int				i;
-	char			*s;
+	int64_t		len;
 
-	len = ft_intlen(n);
-	i = 0;
-	nb = (n < 0) ? (unsigned int)-n : (unsigned int)n;
-	if (!(s = ft_strnew(len)))
-		return (NULL);
-	if (n < 0)
+	len = (n < 0) ? 2 : 1;
+	while (((n) > 9) || ((n) < -9))
 	{
-		s[0] = '-';
-		i++;
+		len++;
+		n = n / 10;
 	}
-	n = len;
-	while (i < len)
-	{
-		s[len - 1] = nb % 10 + 48;
-		nb = nb / 10;
-		len--;
-	}
-	s[n] = '\0';
-	return (s);
+	return (len);
 }

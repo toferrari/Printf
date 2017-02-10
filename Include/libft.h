@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/02 17:24:21 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/10 16:45:26 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,14 @@ void			ft_putstrnbr(char *str, int nb);
 void			ft_putnbrendl(int nb);
 char			*ft_realloc_chr(char *src, int size);
 int				ft_realloc_adr(char **str, int size);
-int				ft_putstrlen(const char *str);
-int				ft_strclen(char *str, char c);
+char			*ft_strnchr(char *src, char *find);
+void			ft_strputnchr(char **str, char c, int n);
 char			*ft_strccat(char *dest, char *src, char c);
-char			*ft_strnchr(const char *str, const char *find);
-
+int				ft_strclen(char *str, char c);
+char			*ft_strnccat(char *dest, char c, int n);
+int				ft_intlen_uintmax(uint64_t n);
+int				ft_intlen_intmax(int64_t n);
+char			*ft_itoa_64(int64_t n);
+char			*ft_itoa_u64(uint64_t n);
 
 #endif

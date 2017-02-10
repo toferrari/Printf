@@ -70,7 +70,12 @@ SRC =	ft_memset.c \
 		ft_strclen.c \
 		ft_strccat.c \
 		ft_strnchr.c \
-		ft_strputnchr.c
+		ft_strputnchr.c \
+		ft_strnccat.c \
+		ft_intlen_intmax.c \
+		ft_intlen_uintmax.c \
+		ft_itoa_64.c \
+		ft_itoa_u64.c
 
 PT_O =	ft_memset.o \
 		ft_bzero.o \
@@ -142,7 +147,12 @@ PT_O =	ft_memset.o \
 		ft_strclen.o \
 		ft_strccat.o \
 		ft_strnchr.o \
-		ft_strputnchr.o
+		ft_strputnchr.o \
+		ft_strnccat.o \
+		ft_intlen_intmax.o \
+		ft_intlen_uintmax.o \
+		ft_itoa_64.o \
+		ft_itoa_u64.o
 
 all: $(NAME)
 

@@ -1,41 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_convert_signe.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/10 16:04:21 by tferrari         ###   ########.fr       */
+/*   Created: 2017/02/10 11:46:31 by tferrari          #+#    #+#             */
+/*   Updated: 2017/02/10 12:16:37 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "libft.h"
 
-char	*ft_itoa(int n)
+int		ft_convert_signe(char **str, t_print ptf)
 {
-	int				len;
-	unsigned int	nb;
-	int				i;
-	char			*s;
-
-	len = ft_intlen(n);
-	i = 0;
-	nb = (n < 0) ? (unsigned int)-n : (unsigned int)n;
-	if (!(s = ft_strnew(len)))
-		return (NULL);
-	if (n < 0)
-	{
-		s[0] = '-';
-		i++;
-	}
-	n = len;
-	while (i < len)
-	{
-		s[len - 1] = nb % 10 + 48;
-		nb = nb / 10;
-		len--;
-	}
-	s[n] = '\0';
-	return (s);
+	if (ptf.plus == 1)
+		*str = ft_strcat(*str, "+");
+	else if (ptf.space == 1)
+		*str = ft_strcat(*str, " ");
+	return ((ptf.plus == 1 || ptf.space == 1) ? 1 : 0);
 }

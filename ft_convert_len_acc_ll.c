@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_convert_len_acc_ll.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/10 16:04:21 by tferrari         ###   ########.fr       */
+/*   Created: 2017/02/09 11:08:31 by tferrari          #+#    #+#             */
+/*   Updated: 2017/02/10 14:57:45 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/ft_printf.h"
 #include "libft.h"
 
-char	*ft_itoa(int n)
+int		ft_convert_len_acc_ll(t_print ptf, int64_t nb)
 {
-	int				len;
-	unsigned int	nb;
-	int				i;
-	char			*s;
+	int64_t len;
 
-	len = ft_intlen(n);
-	i = 0;
-	nb = (n < 0) ? (unsigned int)-n : (unsigned int)n;
-	if (!(s = ft_strnew(len)))
-		return (NULL);
-	if (n < 0)
-	{
-		s[0] = '-';
-		i++;
-	}
-	n = len;
-	while (i < len)
-	{
-		s[len - 1] = nb % 10 + 48;
-		nb = nb / 10;
-		len--;
-	}
-	s[n] = '\0';
-	return (s);
+	len = ft_intlen_intmax(nb);
+	if (ptf.zero > len || ptf.accuracy > len)
+		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
+	if (ptf.space == 1 || ptf.plus == 1)
+		len++;
+	return (len);
 }

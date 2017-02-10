@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/09 16:38:33 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/10 18:42:31 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,15 @@ static void	ft_length(char **format, t_print *s_ptf)
 		i++;
 	}
 	*format += i;
-	s_ptf->l = (s_ptf->l % 2 == 0) ? 2 : 1;
-	s_ptf->h = (s_ptf->h % 2 == 0) ? 2 : 1;
+	if (s_ptf->l > 0)
+		s_ptf->l = (s_ptf->l % 2 == 0) ? 2 : 1;
+	if (s_ptf->h > 0)
+		s_ptf->h = (s_ptf->h % 2 == 0) ? 2 : 1;
 }
 
 static void	ft_convert(char **format, t_print *s_ptf)
 {
-	if (ft_strchr("sSpdDioOuUxXcCeEfFgGaAnbrk%", *format[0]))
+	if (ft_strchr("sSpdDioOuUxXcCeEfFgGaAnbrk", *format[0]))
 		s_ptf->c = *format[0];
 	*format += 1;
 }
@@ -92,7 +94,7 @@ int			ft_parse_flag(char **format, va_list *arg, char **str)
 	ft_flag(&format, &argument);
 	ft_accuracy(format, &argument);
 	ft_length(format, &argument);
-	ft_flag(&format, &argument);
+	//ft_flag(&format, &argument);
 	ft_convert(format, &argument);
 	len_flag = ft_call_arg(arg, str, argument);
 

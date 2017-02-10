@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/09 17:40:06 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/10 18:53:11 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include "include/ft_printf.h"
 
-static int	ft_0_pourcent(char **str, int ret, char *format)
+static int	ft_0_pourcent(char **str, char *format)
 {
 	int i;
 	int len;
@@ -36,13 +36,13 @@ static int	ft_parse(char *format, va_list *arg, int ret, char **str)
 	if (*str == NULL)
 		*str = ft_strnew(1);
 	if (!(find_percent = ft_strchr(format, '%')))
-		return (ret += ft_0_pourcent(str, ret, format));
+		return (ret += ft_0_pourcent(str, format));
 	if (format[i] != '%')
 	{
 		ft_realloc_adr(str, i = ft_strclen(format, '%'));
 		*str = ft_strccat(*str, format, '%');
 	}
-	else if (format[i] && format[i] == '%')
+	if (format[i] && format[i] == '%')
 	{
 		format += i + 1;
 		nb = ft_parse_flag(&format, arg, str);
@@ -66,21 +66,24 @@ int			ft_printf(char *format, ...)
 
 int main(void)
 {
-	int i;
-	int l = 99;
+	long i = -1407346244;
+	int l = -2147483647;
+	//short s = 9888888888;
 	uintmax_t l2;
 	float f = 10.2;
-	unsigned long long h = 1407346244594160000;
-	char *test;
+	unsigned long long h = -18446744073709551;
+	uintmax_t u = -5;
+	//char test[] = "";
 	i = 0;
 	char c = '9';
 
-	test = ft_strdup("salut tu vas bien?");
+	//test = ft_strdup("salut tu vas bien?");
 
     //i = printf("%1.1d\n", l);
-	//i = printf("%9.10d", l);
-	i = ft_printf("%2.1d", l);
-	ft_putnbr(i);
+	i = printf("le vrai :%-30.25lld", h);
+	//i = printf("%10.50d", l);
+	i = ft_printf("le mien :%-30.25lld", h);
+	//ft_putnbr(i);
 //	ft_putchar('\n');
 //	ft_putstrnbr("ret = ", i);
     return 0;

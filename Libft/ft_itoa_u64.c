@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_u64.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/10 16:04:21 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/10 17:04:47 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char	*ft_itoa_u64(uint64_t n)
 {
-	int				len;
-	unsigned int	nb;
-	int				i;
-	char			*s;
+	uint64_t	len;
+	uint64_t	end;
+	uint64_t	i;
+	char		*s;
 
-	len = ft_intlen(n);
+	len = ft_intlen_uintmax(n);
 	i = 0;
-	nb = (n < 0) ? (unsigned int)-n : (unsigned int)n;
 	if (!(s = ft_strnew(len)))
 		return (NULL);
-	if (n < 0)
-	{
-		s[0] = '-';
-		i++;
-	}
-	n = len;
+	end = len;
 	while (i < len)
 	{
-		s[len - 1] = nb % 10 + 48;
-		nb = nb / 10;
+		s[len - 1] = n % 10 + 48;
+		n = n / 10;
 		len--;
 	}
-	s[n] = '\0';
+	s[end] = '\0';
 	return (s);
 }

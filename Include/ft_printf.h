@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/09 16:34:30 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/10 18:19:46 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 #include <stdio.h>
+#include <stdint.h>
 
 typedef	struct	s_struct
 {
@@ -40,7 +41,9 @@ int			ft_parse_flag(char **format, va_list *arg, char **str);
 int			ft_flag_d(t_print ptf, int nb, char **str);
 void		ft_strputnchr(char **str, char c, int n);
 int			ft_call_arg(va_list *arg, char **str, t_print ptf);
-int			ft_convert_len_acc(char **str, t_print ptf, unsigned long long nb);
-
+int			ft_convert_len_acc(t_print ptf, int nb);
+int			ft_convert_signe(char **str, t_print ptf);
+int			ft_convert_len_acc_ll(t_print ptf, int64_t nb);
+int			ft_flag_lld(t_print ptf, int64_t nb, char **str);
 
 #endif

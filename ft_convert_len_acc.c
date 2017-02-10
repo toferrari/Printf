@@ -6,14 +6,14 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 11:08:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/09 17:39:45 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/10 13:58:50 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/ft_printf.h"
 #include "libft.h"
 
-int		ft_convert_len_acc(char **str, t_print ptf, unsigned long long nb)
+int		ft_convert_len_acc(t_print ptf, int nb)
 {
 	int len;
 

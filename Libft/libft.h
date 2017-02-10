@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/08 14:59:25 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/10 16:45:26 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,10 @@ char			*ft_strnchr(char *src, char *find);
 void			ft_strputnchr(char **str, char c, int n);
 char			*ft_strccat(char *dest, char *src, char c);
 int				ft_strclen(char *str, char c);
+char			*ft_strnccat(char *dest, char c, int n);
+int				ft_intlen_uintmax(uint64_t n);
+int				ft_intlen_intmax(int64_t n);
+char			*ft_itoa_64(int64_t n);
+char			*ft_itoa_u64(uint64_t n);
 
 #endif
