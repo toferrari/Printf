@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_len_acc_ll.c                            :+:      :+:    :+:   */
+/*   ft_flag_pourcent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/09 11:08:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/10 14:57:45 by tferrari         ###   ########.fr       */
+/*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
+/*   Updated: 2017/02/11 17:04:51 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/ft_printf.h"
+#include "ft_printf.h"
 #include "libft.h"
 
-int		ft_convert_len_acc_ll(t_print ptf, int64_t nb)
+int		ft_flag_pourcent(t_print ptf, char **str)
 {
-	int64_t len;
+	int len;
 
-	len = ft_intlen_intmax(nb);
-	if (ptf.zero > len || ptf.accuracy > len)
+	len = 1;
+	if (ptf.accuracy > 1 || ptf.zero > 1)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
-	if (ptf.space == 1 || ptf.plus == 1)
-		len++;
+	ft_realloc_adr(str, len);
+	if (ptf.moins == 1)
+	{
+		*str = ft_strcat(*str, "%");
+		*str = ft_strnccat(*str, ' ', len - 1);
+	}
+	else
+	{
+		if (ptf.zero > 0)
+			*str = ft_strnccat(*str, ' ', len - 1);
+		else if (ptf.accuracy > 0)
+			*str = ft_strnccat(*str, '0', len - 1);
+		*str = ft_strcat(*str, "%");
+	}
 	return (len);
 }

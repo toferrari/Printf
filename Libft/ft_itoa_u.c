@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_signe.c                                 :+:      :+:    :+:   */
+/*   ft_itoa_u.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/10 11:46:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 12:01:23 by tferrari         ###   ########.fr       */
+/*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
+/*   Updated: 2017/02/11 11:29:41 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft.h"
 
-int		ft_convert_signe(char **str, t_print ptf)
+char	*ft_itoa_u(unsigned int n)
 {
-	if (ptf.plus == 1)
-		*str = ft_strcat(*str, "+");
-	else if (ptf.space == 1)
-		*str = ft_strcat(*str, " ");
-	return ((ptf.plus == 1 || ptf.space == 1) ? 1 : 0);
+	int		len;
+	int		end;
+	int		i;
+	char	*s;
+
+	len = ft_intlen_u(n);
+	i = 0;
+	if (!(s = ft_strnew(len)))
+		return (NULL);
+	end = len;
+	while (i < len)
+	{
+		s[len - 1] = n % 10 + 48;
+		n = n / 10;
+		len--;
+	}
+	s[end] = '\0';
+	return (s);
 }

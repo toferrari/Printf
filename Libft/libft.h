@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/10 16:45:26 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/11 11:18:53 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,7 @@ int				ft_intlen_uintmax(uint64_t n);
 int				ft_intlen_intmax(int64_t n);
 char			*ft_itoa_64(int64_t n);
 char			*ft_itoa_u64(uint64_t n);
+char			*ft_itoa_u(unsigned int n);
+int				ft_intlen_u(unsigned int n);
 
 #endif

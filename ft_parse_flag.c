@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/10 18:42:31 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/11 17:08:19 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_flag(char ***format, t_print *s_ptf)
 	int i;
 
 	i = 0;
-	if ((**format)[i] && ((**format)[i] == '#' || (**format)[i] == '-' || (**format)[i] == '+'
+	while ((**format)[i] && ((**format)[i] == '#' || (**format)[i] == '-' || (**format)[i] == '+'
 	|| (**format)[i] == ' ' || ft_isdigit((**format)[i])))
 	{
 		if ((**format)[i] == '#')
@@ -32,9 +32,14 @@ static void	ft_flag(char ***format, t_print *s_ptf)
 			s_ptf->space = 1;
 		else if (ft_isdigit((**format)[i]))
 			s_ptf->zero = s_ptf->zero * 10 + ((**format)[i] - '0');
-		**format += (i + 1);
-		ft_flag(format, s_ptf);
+		i++;
 	}
+	if ((**format)[0] == '0' && (**format)[i] != '.')
+	{
+		s_ptf->accuracy = s_ptf->zero;
+		s_ptf->zero = 0;
+	}
+	**format += i;
 }
 
 static void	ft_accuracy(char **format, t_print *s_ptf)
@@ -42,7 +47,7 @@ static void	ft_accuracy(char **format, t_print *s_ptf)
 	int i;
 
 	i = 0;
-	if ((*format)[i] && (*format)[i] == '.')
+	if ((*format)[i] && (*format)[i] == '.' && s_ptf->accuracy == 0)
 	{
 		s_ptf->bool_acc = 1;
 		i++;
@@ -68,6 +73,8 @@ static void	ft_length(char **format, t_print *s_ptf)
 			s_ptf->h++;
 		else if ((*format)[i] == 'L')
 			s_ptf->L = 1;
+		else if ((*format)[i] == 'j')
+			s_ptf->j = 1;
 		i++;
 	}
 	*format += i;
@@ -79,7 +86,7 @@ static void	ft_length(char **format, t_print *s_ptf)
 
 static void	ft_convert(char **format, t_print *s_ptf)
 {
-	if (ft_strchr("sSpdDioOuUxXcCeEfFgGaAnbrk", *format[0]))
+	if (ft_strchr("sSpdDioOuUxXcCeEfFgGaAnbrk%", *format[0]))
 		s_ptf->c = *format[0];
 	*format += 1;
 }
