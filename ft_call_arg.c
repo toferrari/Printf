@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 18:31:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 17:03:11 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/14 15:40:16 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,13 @@ int		ft_call_arg(va_list *arg, char **str, t_print ptf)
 		return (ft_flag_u(ptf, va_arg(*arg, unsigned int), str));
 	else if (ptf.c == '%')
 		return (ft_flag_pourcent(ptf, str));
-	/*if (ft_strchr("sS", ptf.c))
-		return (ft_flag_char(arg, va_arg(*arg, int), str));*/
+	else if (ft_strchr("oO", ptf.c))
+		return (ft_flag_octal(ptf, va_arg(*arg, unsigned int), str));
+	else if (ft_strchr("xX", ptf.c))
+		return (ft_flag_hexa(ptf, va_arg(*arg, unsigned int), str));
+	if (ft_strchr("s", ptf.c))
+		return (ft_flag_str(ptf, va_arg(*arg, char *), str));
+	if (ft_strchr("c", ptf.c))
+		return (ft_flag_str(ptf, va_arg(*arg, char *), str));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 17:08:19 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/14 14:47:27 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	ft_flag(char ***format, t_print *s_ptf)
 			s_ptf->zero = s_ptf->zero * 10 + ((**format)[i] - '0');
 		i++;
 	}
-	if ((**format)[0] == '0' && (**format)[i] != '.')
+	if ((**format)[0] == '0' && (**format)[i] != '.' && s_ptf->moins == 0)
 	{
 		s_ptf->accuracy = s_ptf->zero;
 		s_ptf->zero = 0;
@@ -56,6 +56,8 @@ static void	ft_accuracy(char **format, t_print *s_ptf)
 			s_ptf->accuracy = s_ptf->accuracy * 10 + ((*format)[i] - '0');
 			i++;
 		}
+		if (ft_strchr("sS%", (*format)[i]))
+			s_ptf->accuracy = 0;
 		*format += i;
 	}
 }
@@ -86,7 +88,7 @@ static void	ft_length(char **format, t_print *s_ptf)
 
 static void	ft_convert(char **format, t_print *s_ptf)
 {
-	if (ft_strchr("sSpdDioOuUxXcCeEfFgGaAnbrk%", *format[0]))
+	if (ft_strchr("sSpdDioOuUxXcCeEfFgGaAnbrk%", (*format)[0]))
 		s_ptf->c = *format[0];
 	*format += 1;
 }
@@ -101,7 +103,7 @@ int			ft_parse_flag(char **format, va_list *arg, char **str)
 	ft_flag(&format, &argument);
 	ft_accuracy(format, &argument);
 	ft_length(format, &argument);
-	//ft_flag(&format, &argument);
+	ft_flag(&format, &argument);
 	ft_convert(format, &argument);
 	len_flag = ft_call_arg(arg, str, argument);
 

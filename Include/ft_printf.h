@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 16:26:10 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/14 15:40:48 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,9 @@ int			ft_flag_lld(t_print ptf, int64_t nb, char **str);
 int			ft_flag_u(t_print ptf, unsigned int nb, char **str);
 int			ft_flag_llu(t_print ptf, uint64_t nb, char **str);
 int			ft_flag_pourcent(t_print ptf, char **str);
+int			ft_flag_octal(t_print ptf, unsigned int nb, char **str);
+int			ft_flag_hexa(t_print ptf, unsigned int nb, char **str);
+int			ft_flag_str(t_print ptf, char *src, char **str);
+int			ft_flag_chr(t_print ptf, char *c, char **str);
 
 #endif

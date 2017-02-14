@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 17:10:45 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/14 15:41:09 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,26 @@ int			ft_printf(char *format, ...)
 
 int main(void)
 {
-	long i = -1407346244;
-	int l = 3147483647;
+	long i = 2147483647;
+	unsigned int l = 39;
 	//short s = 9888888888;
+	int n = 748548;
 	uintmax_t l2 = 5;
 	float f = 10.2;
 	unsigned long long h = 18446744073709551;
 	int64_t u = 5;
-	//char test[] = "";
+	char *t;
 	i = 0;
-	char c = 49;
+	char c = 'f';
 
-	//test = ft_strdup("salut tu vas bien?");
+	t = ft_strdup("salut tu vas bien?");
 
     //i = printf("%1.1d\n", l);
-	i = printf("le vrai :%-010%");
-	//i = printf("%10.50d", l);
-	i = ft_printf("le mien :%-010%", l);
-	//ft_putnbr(i);
+	//printf("%S", L"Some String");
+	i = printf("le vrai :%40c", c);
+	//i = printf("%s\n", ft_itoa_h(n, 0));
+	//i = printf("%s\n", ft_itoa_h(n, 1));
+	i = ft_printf("le mien :%40c", c);
 //	ft_putchar('\n');
 //	ft_putstrnbr("ret = ", i);
     return 0;
