@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 18:31:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/14 17:36:42 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/15 16:22:59 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 int		ft_call_arg(va_list *arg, char **str, t_print ptf)
 {
-	if ((ptf.l > 0 || ptf.j == 1) && ft_strchr("dDi", ptf.c))
+	if ((ptf.l > 0 || ptf.j == 1 || ptf.z == 1) && ft_strchr("dDi", ptf.c))
 		return (ft_flag_lld(ptf, (int64_t)va_arg(*arg, long long), str));
-	else if (ft_strchr("dDi", ptf.c) || (ft_strchr("dDi", ptf.c) && ptf.h == 1))
+	else if (ft_strchr("dDi", ptf.c) && ptf.h == 1)
+		return (ft_flag_hd(ptf, (short)va_arg(*arg, int), str));
+	else if (ft_strchr("dDi", ptf.c))
 		return (ft_flag_d(ptf, va_arg(*arg, int), str));
 	else if ((ptf.l > 0 || ptf.j == 1) && ft_strchr("uU", ptf.c))
 		return (ft_flag_llu(ptf, (uint64_t)va_arg(*arg, long long), str));

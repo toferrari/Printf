@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 18:05:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/14 19:50:27 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/15 19:38:06 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,13 @@ int main(void)
     //i = printf("%1.1d\n", l);
 	//printf("%S", L"Some String");
 	//i = printf("le vrai :%c", c);
-	printf("le vrai :@moulitest: %#.x %#.x", 0, 0);
-	i = ft_printf("le mien :@moulitest: %#.x %#.0x\n", 0, 0);
-	//i = printf("%s\n", ft_itoa_h(n, 0));
+	printf("le vrai :");
+	i = printf("%U", "4294967296");
+	ft_putstrnbr("i_vrai = ", i);
+	ft_putstr("le mien :");
+	i = ft_printf("%U", "4294967296");
+	ft_putchar('\n');
+	ft_putstrnbr("i_mien = ", i);
 	//i = printf("%s\n", ft_itoa_h(n, 1));
 //	ft_putchar('\n');
 //	ft_putstrnbr("ret = ", i);

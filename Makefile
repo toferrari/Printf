@@ -6,7 +6,7 @@
 #    By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/14 16:19:10 by tferrari          #+#    #+#              #
-#    Updated: 2017/02/14 17:33:47 by tferrari         ###   ########.fr        #
+#    Updated: 2017/02/15 15:56:51 by tferrari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = libftprintf.a
 SRC =	ft_call_arg.c \
 		ft_convert_signe.c \
 		ft_flag_d.c \
+		ft_flag_hd.c \
 		ft_flag_hexa.c \
 		ft_flag_lld.c \
 		ft_flag_llu.c \
@@ -54,11 +55,13 @@ SRC =	ft_call_arg.c \
 		Libft/ft_strcpy.c \
 		Libft/ft_strlen.c \
 		Libft/ft_itoa_llh.c \
-		Libft/ft_intlen_llh.c
+		Libft/ft_intlen_llh.c \
+		Libft/ft_strncat.c
 
-OBJ =	ft_call_arg.o \
+PT_O =	ft_call_arg.o \
 		ft_convert_signe.o \
 		ft_flag_d.o \
+		ft_flag_hd.o \
 		ft_flag_hexa.o \
 		ft_flag_lld.o \
 		ft_flag_llu.o \
@@ -98,16 +101,17 @@ OBJ =	ft_call_arg.o \
 		ft_strcpy.o \
 		ft_strlen.o \
 		ft_itoa_llh.o \
-		ft_intlen_llh.o
+		ft_intlen_llh.o \
+		ft_strncat.o
 
 all : $(NAME)
 
 $(NAME):
 	@gcc -c -Wall -Werror -Wextra $(SRC) -Iinclude
-	@ar rc $(NAME) $(OBJ)
+	@ar rc $(NAME) $(PT_O)
 
 clean:
-	rm -f $(OBJ)
+	rm -f $(PT_O)
 
 fclean: clean
 	rm -f $(NAME)

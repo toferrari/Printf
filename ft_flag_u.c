@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 14:21:13 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/15 19:34:57 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ static int	ft_convert_len_acc_u(t_print ptf, unsigned int nb)
 {
 	int len;
 
-	len = ft_intlen(nb);
+	len = ft_intlen_u(nb);
+
 	if (ptf.zero > len || ptf.accuracy > len)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
-	if (ptf.space == 1 || ptf.plus == 1)
+	if ((ptf.space == 1 || ptf.plus == 1) && ptf.c != 'u')
 		len++;
 	return (len);
 }
@@ -51,13 +52,14 @@ static int	ft_convert_len_acc_u(t_print ptf, unsigned int nb)
 int			ft_flag_u(t_print ptf, unsigned int nb, char **str)
 {
 	int	len;
+	int	i;
 
 	len = ft_convert_len_acc_u(ptf, nb);
 	ft_realloc_adr(str, len);
-	len = ft_convert_signe(str, ptf);
+	i = ft_convert_signe(str, ptf, nb);
 	if (ptf.moins == 1)
-		ft_moin_on(str, ptf, nb, (unsigned int)len);
+		ft_moin_on(str, ptf, nb, (unsigned int)i);
 	else
-		ft_moin_off(str, ptf, nb, (unsigned int)len);
+		ft_moin_off(str, ptf, nb, (unsigned int)i);
 	return (len);
 }
