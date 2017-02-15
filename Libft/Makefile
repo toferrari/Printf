@@ -81,7 +81,9 @@ SRC =	ft_memset.c \
 		ft_intlen_o.c \
 		ft_itoa_o.c \
 		ft_intlen_h.c \
-		ft_itoa_h.c
+		ft_itoa_h.c \
+		ft_itoa_llh.c \
+		ft_intlen_llh.c
 
 PT_O =	ft_memset.o \
 		ft_bzero.o \
@@ -164,7 +166,9 @@ PT_O =	ft_memset.o \
 		ft_intlen_o.o \
 		ft_itoa_o.o \
 		ft_intlen_h.o \
-		ft_itoa_h.o
+		ft_itoa_h.o \
+		ft_itoa_llh.o \
+		ft_intlen_llh.o
 
 all: $(NAME)
 

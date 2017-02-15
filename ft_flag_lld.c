@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 14:28:17 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/14 16:16:48 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ static int	ft_convert_len_acc_ll(t_print ptf, int64_t nb)
 int			ft_flag_lld(t_print ptf, int64_t nb, char **str)
 {
 	int64_t		len;
-	int			i;
 
 	len = ft_convert_len_acc_ll(ptf, nb);
 	ft_realloc_adr(str, len);

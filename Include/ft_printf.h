@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/14 15:40:48 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/14 19:20:45 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef	struct	s_struct
 
 }				t_print;
 
+int			ft_printf(char *format, ...);
 void		ft_init_struct(t_print *s_ptf);
 int			ft_parse_flag(char **format, va_list *arg, char **str);
 int			ft_flag_d(t_print ptf, int nb, char **str);
@@ -50,5 +51,6 @@ int			ft_flag_octal(t_print ptf, unsigned int nb, char **str);
 int			ft_flag_hexa(t_print ptf, unsigned int nb, char **str);
 int			ft_flag_str(t_print ptf, char *src, char **str);
 int			ft_flag_chr(t_print ptf, char *c, char **str);
+int			ft_flag_llhexa(t_print ptf, uint64_t nb, char **str);
 
 #endif

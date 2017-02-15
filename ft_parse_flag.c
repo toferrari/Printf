@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/14 14:47:27 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/14 19:21:57 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 static void	ft_flag(char ***format, t_print *s_ptf)
 {
 	int i;
+	int j;
 
 	i = 0;
+	j = 0;
 	while ((**format)[i] && ((**format)[i] == '#' || (**format)[i] == '-' || (**format)[i] == '+'
 	|| (**format)[i] == ' ' || ft_isdigit((**format)[i])))
 	{
@@ -34,7 +36,9 @@ static void	ft_flag(char ***format, t_print *s_ptf)
 			s_ptf->zero = s_ptf->zero * 10 + ((**format)[i] - '0');
 		i++;
 	}
-	if ((**format)[0] == '0' && (**format)[i] != '.' && s_ptf->moins == 0)
+	while (!(ft_isdigit((**format)[j])))
+		j++;
+	if ((**format)[j] == '0' && (**format)[i] != '.' && s_ptf->moins == 0)
 	{
 		s_ptf->accuracy = s_ptf->zero;
 		s_ptf->zero = 0;
@@ -67,7 +71,8 @@ static void	ft_length(char **format, t_print *s_ptf)
 	int i;
 
 	i = 0;
-	while ((*format)[i] && (((*format)[i] == 'l') || (*format)[i] == 'h' || (*format)[i] == 'L'))
+	while ((*format)[i] && (((*format)[i] == 'l') || (*format)[i] == 'h'
+	|| (*format)[i] == 'L' || (*format)[i] == 'j'))
 	{
 		if ((*format)[i] == 'l')
 			s_ptf->l++;

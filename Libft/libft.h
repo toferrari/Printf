@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/13 19:20:43 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/14 17:18:48 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,7 @@ int				ft_intlen_o(unsigned int n);
 char			*ft_itoa_o(unsigned int n);
 char			*ft_itoa_h(unsigned int n, int up);
 int				ft_intlen_h(unsigned int n);
+int				ft_intlen_llh(uint64_t n);
+char			*ft_itoa_llh(uint64_t n, uint64_t up);
 
 #endif
