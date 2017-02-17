@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/15 11:58:31 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/16 17:38:52 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	ft_parse(char *format, va_list *arg, int ret, char **str)
 		*str = ft_strccat(*str, format, '%');
 		ret += i;
 	}
-	if (format[i] && format[i] == '%')
+	if (format[i + 1] && format[i] == '%')
 	{
 		format += i + 1;
 		nb = ft_parse_flag(&format, arg, str);

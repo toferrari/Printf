@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/15 18:50:35 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/17 11:43:45 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ static void	ft_moin_off(char **str, t_print ptf, int nb, int len)
 	len_nb = (nb == 0) ? 0 : ft_intlen_u(unb);
 	if (ptf.accuracy == 0)
 		*str = ft_strnccat(*str, ' ', ptf.zero - len_nb - len);
+	else if (ptf.accuracy < len_nb)
+		*str = ft_strnccat(*str, ' ', ptf.zero - len_nb - len);
 	else
 		*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - len);
 	*str = (nb < 0) ? ft_strcat(*str, "-") : *str;
 	if (ptf.plus == 1 && nb >= 0)
 		*str = ft_strcat(*str, "+");
-	if (ptf.zero == 0 && ptf.bool_acc != 1 && nb != 0)
+	if (nb == 0 && ptf.plus == 1 && ptf.zero == 0)
+		*str = ft_strnccat(*str, '0', ptf.accuracy - len_nb - 1);
+	else if (ptf.zero == 0 && ptf.bool_acc != 1 && nb != 0)
 		*str = ft_strnccat(*str, '0', ptf.accuracy - len_nb - len);
 	else
 		*str = ft_strnccat(*str, '0', ptf.accuracy - len_nb);
@@ -65,7 +69,8 @@ static int	ft_convert_len_acc(t_print ptf, int nb)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
 	else if ((ptf.space == 1 || ptf.plus == 1) && nb >= 0)
 		len++;
-	if (ptf.zero == 0 && ptf.bool_acc == 1 && nb < 0)
+	if (ptf.bool_acc == 1 && nb < 0
+		&& ft_intlen(nb) < ptf.accuracy && ptf.accuracy > ptf.zero)
 		len++;
 	return (len);
 }
@@ -79,7 +84,7 @@ int			ft_flag_d(t_print ptf, int nb, char **str)
 	ft_realloc_adr(str, len);
 	i = ft_convert_signe(str, ptf , nb);
 	i += (nb < 0) ? 1 : 0;
-	//ft_putnbr(i);
+
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, nb, i);
 	else

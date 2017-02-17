@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/15 19:34:57 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/16 14:15:44 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ unsigned int len)
 static void	ft_moin_off(char **str, t_print ptf, unsigned int nb,
 unsigned int len)
 {
-	if (ptf.accuracy == 0)
+	if (ptf.accuracy == 0 || (ptf.accuracy < ft_intlen_u(nb)))
 		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_u(nb) - len);
 	else
 		*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - len);
@@ -42,6 +42,8 @@ static int	ft_convert_len_acc_u(t_print ptf, unsigned int nb)
 
 	len = ft_intlen_u(nb);
 
+	if (nb == 0 && ptf.bool_acc == 1)
+		return (0);
 	if (ptf.zero > len || ptf.accuracy > len)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
 	if ((ptf.space == 1 || ptf.plus == 1) && ptf.c != 'u')
@@ -55,6 +57,8 @@ int			ft_flag_u(t_print ptf, unsigned int nb, char **str)
 	int	i;
 
 	len = ft_convert_len_acc_u(ptf, nb);
+	if (len == 0)
+		return (0);
 	ft_realloc_adr(str, len);
 	i = ft_convert_signe(str, ptf, nb);
 	if (ptf.moins == 1)
