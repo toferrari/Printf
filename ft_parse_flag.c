@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/17 10:13:14 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/21 19:45:29 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ static void	ft_flag(char ***format, t_print *s_ptf)
 	}
 	while (!(ft_isdigit((**format)[j])))
 		j++;
-	if ((**format)[j] == '0' && (**format)[i] != '.' && s_ptf->moins == 0)
+	if (((**format)[j] == '0' && (**format)[i] != '.' && s_ptf->moins == 0) ||
+	((**format)[j] == '0' && (**format)[i] == '.' && (**format)[i + 1] == 'c'))
 	{
 		s_ptf->accuracy = s_ptf->zero;
 		s_ptf->zero = 0;
@@ -51,7 +52,8 @@ static void	ft_accuracy(char **format, t_print *s_ptf)
 	int i;
 
 	i = 0;
-	if ((*format)[i] && (*format)[i] == '.' && s_ptf->accuracy == 0)
+	if (((*format)[i] && (*format)[i] == '.' && s_ptf->accuracy == 0) ||
+	((*format)[i] && (*format)[i] == '.' && (*format)[i + 1] == 'c'))
 	{
 		s_ptf->bool_acc = 1;
 		i++;
@@ -100,7 +102,7 @@ static void	ft_convert(char **format, t_print *s_ptf)
 	*format += 1;
 }
 
-int			ft_parse_flag(char **format, va_list *arg, char **str)
+int			ft_parse_flag(char **format, va_list *arg, char **str, int ret)
 {
 	t_print argument;
 	int len_flag;
@@ -112,6 +114,7 @@ int			ft_parse_flag(char **format, va_list *arg, char **str)
 	ft_length(format, &argument);
 	ft_flag(&format, &argument);
 	ft_convert(format, &argument);
+	argument.ret = ret;
 	len_flag = ft_call_arg(arg, str, argument, format);
 
 	return (len_flag);

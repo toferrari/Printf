@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 18:05:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/17 11:15:59 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/21 20:29:38 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main(void)
 {
-	int i = 2147483647;
+	int i ;
 	unsigned int l = 39;
 	//short s = 9888888888;
 	int n = 748548;
@@ -26,8 +26,8 @@ int main(void)
 	//unsigned long long ULLONG_MAX = 18446744073709551615;
 	int64_t u = 5;
 	char t[50] = "salut tu vas bien?";
-	i = 0;
 	char c = 'f';
+	int j;
 
 	//t = ft_strdup("salut tu vas bien?");
 
@@ -35,12 +35,12 @@ int main(void)
 	//printf("%S", L"Some String");
 	//i = printf("le vrai :%c", c);
 	printf("le vrai :");
-	i = printf("%o, %ho, %hho", -42, -42, -42);
+	i = printf("{%+03d}", 0);
 	printf("\ni_vrai = %d", i);
 	ft_putstr("le mien :");
-	i = ft_printf("%o, %ho, %hho", -42, -42, -42);
+	j = ft_printf("{%+03d}", 0);
 	ft_putchar('\n');
-	ft_putstrnbr("i_mien = ", i);
+	ft_putstrnbr("i_mien =", j);
 	//i = printf("\n%hhd\n", SHRT_MAX);
 //	ft_putchar('\n');
 //	ft_putstrnbr("ret = ", i);

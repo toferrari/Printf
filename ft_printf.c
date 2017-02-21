@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/16 17:38:52 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/21 18:59:26 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 #include "libft.h"
 #include "include/ft_printf.h"
 
-static int	ft_0_pourcent(char **str, char *format)
+static int	ft_0_pourcent(char **str, char *format, int ret)
 {
 	int i;
 	int len;
 
 	i = 0;
 	len = ft_strlen(format);
-	ft_realloc_adr(str, len);
-	*str = ft_strcat(*str, format);
+	ft_realloc_adr_p(str, len, ret);
+	*str = ft_strcat_p(*str, format, ret);
 	return (len);
 }
 
 static int	ft_parse(char *format, va_list *arg, int ret, char **str)
 {
 	int i;
-	char *find_percent;
 	int nb;
 
 	i = 0;
 	if (*str == NULL)
 		*str = ft_strnew(1);
-	if (!(find_percent = ft_strchr(format, '%')))
-		return (ret += ft_0_pourcent(str, format));
+	if (!ft_strchr(format, '%'))
+		return (ret += ft_0_pourcent(str, format, ret));
 	if (format[i] != '%')
 	{
 		ft_realloc_adr(str, i = ft_strclen(format, '%'));
@@ -46,7 +45,7 @@ static int	ft_parse(char *format, va_list *arg, int ret, char **str)
 	if (format[i + 1] && format[i] == '%')
 	{
 		format += i + 1;
-		nb = ft_parse_flag(&format, arg, str);
+		nb = ft_parse_flag(&format, arg, str, ret);
 		ret = ft_parse(format, arg, ret + nb, str);
 	}
 	return (ret);
@@ -60,7 +59,9 @@ int			ft_printf(char *format, ...)
 
 	va_start(arg, format);
 	ret = ft_parse(format, &arg, 0, &str);
-	ft_putstr(str);
+	if (ret != -1)
+		write(1, str, ret);
 	va_end(arg);
+	ft_memdel((void **)&str);
 	return (ret);
 }

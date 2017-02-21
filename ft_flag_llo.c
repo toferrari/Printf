@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:40:56 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/16 20:13:00 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/20 17:13:09 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ static int	ft_convert_len_acc(t_print ptf, uint64_t nb)
 	int len;
 
 	len = ft_intlen_llo(nb);
+	if (ptf.zero == 0 && ptf.accuracy == 0 && ptf.bool_acc == 1)
+		return (0);
 	if (ptf.zero > len || ptf.accuracy > len)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
 	if (ptf.accuracy == 0 && ptf.zero == 0 && ptf.htag == 1)

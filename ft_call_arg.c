@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 18:31:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/17 11:20:25 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/21 19:48:00 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int		ft_call_arg(va_list *arg, char **str, t_print ptf, char **format)
 		ptf.l = 1;
 	if (ptf.c == 0)
 		return(ft_flag_c_null(ptf, format, str));
+	else if (ptf.h == 2 && ft_strchr("id", ptf.c))
+		return (ft_flag_hh(ptf, (char)va_arg(*arg, int), str));
+	else if (ptf.h == 2 && ft_strchr("o", ptf.c))
+		return (ft_flag_hho(ptf, (unsigned char)va_arg(*arg, int), str));
+	else if (ptf.h == 2 && ft_strchr("u", ptf.c))
+		return (ft_flag_hhu(ptf, (unsigned char)va_arg(*arg, int), str));
+	else if (ptf.h == 2 && ft_strchr("xX", ptf.c))
+		return (ft_flag_hhx(ptf, (unsigned char)va_arg(*arg, int), str));
 	else if ((ptf.l > 0 || ptf.j == 1 || ptf.z == 1) && ft_strchr("dDi", ptf.c))
 		return (ft_flag_lld(ptf, (int64_t)va_arg(*arg, long long), str));
 	else if (ft_strchr("dDi", ptf.c) && ptf.h == 2)
