@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/17 11:46:40 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 16:29:26 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int			ft_flag_str(t_print ptf, char *src, char **str)
 
 	if (!src)
 	{
-		ft_realloc_adr(str, 6);
+		ft_realloc_adr_p(str, 6, ptf.ret);
 		*str = ft_strcat(*str, "(null)");
 		return (6);
 	}
 	len = ft_convert_len_acc(ptf, src);
-	ft_realloc_adr(str, len);
+	ft_realloc_adr_p(str, len, ptf.ret);
 	if (ptf.moins == 1)
 	{
 		if (ptf.accuracy > 0 && ft_strlen(src) > 0)

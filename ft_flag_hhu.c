@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/20 17:49:47 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 15:53:14 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	ft_moin_on(char **str, t_print ptf, int nb, int len)
 	unb = (nb < 0) ? (unsigned int)-nb : nb;
 	*str = (nb < 0) ? ft_strcat(*str, "-") : *str;
 	if (ptf.accuracy > 0)
-		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_u(unb));
-	*str = ft_strcat(*str, ft_itoa_u(unb));
+		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base(unb, 10));
+	*str = ft_strcat(*str, ft_itoa_base(unb, 10));
 	if (ptf.accuracy == 0)
-		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_u(unb) - len);
+		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_base(unb, 10) - len);
 	else
 		*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - len);
 }
@@ -34,12 +34,12 @@ static void	ft_moin_off(char **str, t_print ptf, int nb, int len)
 
 	unb = (nb < 0) ? (unsigned int)-nb : nb;
 	if (ptf.accuracy == 0)
-		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_u(unb) - len);
+		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_base(unb, 10) - len);
 	else
 		*str =  ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - len);
 	*str = (nb < 0) ? ft_strcat(*str, "-") : *str;
-	*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_u(unb) - len);
-	*str = ft_strcat(*str, ft_itoa_u(unb));
+	*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base(unb, 10) - len);
+	*str = ft_strcat(*str, ft_itoa_base(unb, 10));
 }
 
 static int	ft_convert_len_acc(t_print ptf, int nb)

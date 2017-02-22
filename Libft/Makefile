@@ -72,23 +72,16 @@ SRC =	ft_memset.c \
 		ft_strnchr.c \
 		ft_strputnchr.c \
 		ft_strnccat.c \
-		ft_intlen_intmax.c \
-		ft_intlen_uintmax.c \
+		ft_intlen_64.c \
 		ft_itoa_64.c \
-		ft_itoa_u64.c \
-		ft_itoa_u.c \
-		ft_intlen_u.c \
-		ft_intlen_o.c \
-		ft_itoa_o.c \
-		ft_intlen_h.c \
-		ft_itoa_h.c \
-		ft_itoa_llh.c \
-		ft_intlen_llh.c \
-		ft_itoa_llo.c \
-		ft_intlen_llo.c \
 		ft_strlnccat.c \
 		ft_strcat_p.c \
-		ft_realloc_adr_p.c
+		ft_realloc_adr_p.c \
+		ft_intlen_base.c \
+		ft_itoa_base.c \
+		ft_intlen_base64.c \
+		ft_itoa_base64.c \
+		ft_strupper.c
 
 PT_O =	ft_memset.o \
 		ft_bzero.o \
@@ -162,23 +155,16 @@ PT_O =	ft_memset.o \
 		ft_strnchr.o \
 		ft_strputnchr.o \
 		ft_strnccat.o \
-		ft_intlen_intmax.o \
-		ft_intlen_uintmax.o \
+		ft_intlen_64.o \
 		ft_itoa_64.o \
-		ft_itoa_u64.o \
-		ft_itoa_u.o \
-		ft_intlen_u.o \
-		ft_intlen_o.o \
-		ft_itoa_o.o \
-		ft_intlen_h.o \
-		ft_itoa_h.o \
-		ft_itoa_llh.o \
-		ft_intlen_llh.o \
-		ft_itoa_llo.o \
-		ft_intlen_llo.o \
 		ft_strlnccat.o \
 		ft_strcat_p.o \
-		ft_realloc_adr_p.o
+		ft_realloc_adr_p.o \
+		ft_intlen_base.o \
+		ft_itoa_base.o \
+		ft_intlen_base64.o \
+		ft_itoa_base64.o \
+		ft_strupper.o
 
 all: $(NAME)
 

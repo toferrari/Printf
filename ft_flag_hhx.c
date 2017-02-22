@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/21 11:43:02 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 17:15:49 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static void	ft_moin_on(char **str, t_print ptf, int nb, int len)
 	unb = (nb < 0) ? (unsigned int)-nb : nb;
 	*str = (nb < 0) ? ft_strcat(*str, "-") : *str;
 	if (ptf.accuracy > 0)
-		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_h(unb));
-	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_itoa_h(nb, 1)) :
-	ft_strcat(*str, ft_itoa_h(nb, 0));
+		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base(unb, 16));
+	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_strupper(ft_itoa_base(nb, 16))) :
+	ft_strcat(*str, ft_itoa_base(nb, 16));
 	if (ptf.accuracy == 0)
-		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_h(unb) - len);
+		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_base(unb, 16) - len);
 	else
 		*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - len);
 }
@@ -35,13 +35,13 @@ static void	ft_moin_off(char **str, t_print ptf, int nb, int len)
 
 	unb = (nb < 0) ? (unsigned int)-nb : nb;
 	if (ptf.accuracy == 0)
-		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_h(unb) - len);
+		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_base(unb, 16) - len);
 	else
 		*str =  ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - len);
 	*str = (nb < 0) ? ft_strcat(*str, "-") : *str;
-	*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_h(unb) - len);
-	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_itoa_h(nb, 1)) :
-	ft_strcat(*str, ft_itoa_h(nb, 0));
+	*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base(unb, 16) - len);
+	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_strupper(ft_itoa_base(nb, 16))) :
+	ft_strcat(*str, ft_itoa_base(nb, 16));
 }
 
 static int	ft_convert_len_acc(t_print ptf, int nb, int len_nb)
@@ -62,9 +62,9 @@ int			ft_flag_hhx(t_print ptf, unsigned char nb, char **str)
 	int		i;
 	int		len_nb;
 
-	len_nb = ft_intlen_h(nb);
+	len_nb = ft_intlen_base(nb, 16);
 	len = ft_convert_len_acc(ptf, nb, len_nb);
-	ft_realloc_adr(str, len);
+	ft_realloc_adr_p(str, len, ptf.ret);
 	i = ft_convert_signe(str, ptf , nb);
 	i += (nb < 0) ? 1 : 0;
 	if (ptf.moins == 1)

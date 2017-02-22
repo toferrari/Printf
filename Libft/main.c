@@ -1,28 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2016/11/22 20:46:18 by tferrari         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "libft.h"
 #include <stdio.h>
-#include <unistd.h>
-#include <wchar.h>
-int	main(void)
+#include "libft.h"
+int main()
 {
-
-
-
-
-	//printf("retour : %d\n", ft_printf("'%.3lS'\n", L"éζ\x112u\x4A65-\x10082"));
-	ft_putnbr(-2147483647);
-	//putnbr("01-11230010203-562147483647-2147483648");
-	return (0);
-
+	printf("%lx", 4294967296);
+	printf("%s\n", ft_itoa_base64(4294967296, 16));
 }

@@ -6,7 +6,7 @@
 #    By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/14 16:19:10 by tferrari          #+#    #+#              #
-#    Updated: 2017/02/21 18:58:49 by tferrari         ###   ########.fr        #
+#    Updated: 2017/02/22 17:36:05 by tferrari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -16,7 +16,6 @@ NAME = libftprintf.a
 SRC =	ft_call_arg.c \
 		ft_convert_signe.c \
 		ft_flag_d.c \
-		ft_flag_hh.c \
 		ft_flag_hhu.c \
 		ft_flag_hho.c \
 		ft_flag_hhx.c \
@@ -43,18 +42,14 @@ SRC =	ft_call_arg.c \
 		Libft/ft_strnchr.c \
 		Libft/ft_strputnchr.c \
 		Libft/ft_strnccat.c \
-		Libft/ft_intlen_intmax.c \
-		Libft/ft_intlen_uintmax.c \
 		Libft/ft_itoa_64.c \
-		Libft/ft_itoa_u64.c \
-		Libft/ft_itoa_u.c \
-		Libft/ft_intlen_u.c \
-		Libft/ft_intlen_o.c \
-		Libft/ft_itoa_o.c \
-		Libft/ft_intlen_h.c \
-		Libft/ft_itoa_h.c \
 		Libft/ft_itoa.c \
+		Libft/ft_itoa_base.c \
+		Libft/ft_itoa_base64.c \
 		Libft/ft_intlen.c \
+		Libft/ft_intlen_64.c \
+		Libft/ft_intlen_base.c \
+		Libft/ft_intlen_base64.c \
 		Libft/ft_putstr.c \
 		Libft/ft_bzero.c \
 		Libft/ft_strchr.c \
@@ -64,19 +59,15 @@ SRC =	ft_call_arg.c \
 		Libft/ft_isdigit.c \
 		Libft/ft_strcpy.c \
 		Libft/ft_strlen.c \
-		Libft/ft_itoa_llh.c \
-		Libft/ft_intlen_llh.c \
 		Libft/ft_strncat.c \
-		Libft/ft_intlen_llo.c \
-		Libft/ft_itoa_llo.c \
 		Libft/ft_strlnccat.c \
 		Libft/ft_strcat_p.c \
-		Libft/ft_realloc_adr_p.c
+		Libft/ft_realloc_adr_p.c \
+		Libft/ft_strupper.c
 
 PT_O =	ft_call_arg.o \
 		ft_convert_signe.o \
 		ft_flag_d.o \
-		ft_flag_hh.o \
 		ft_flag_hhu.o \
 		ft_flag_hho.o \
 		ft_flag_hhx.o \
@@ -103,18 +94,14 @@ PT_O =	ft_call_arg.o \
 		ft_strnchr.o \
 		ft_strputnchr.o \
 		ft_strnccat.o \
-		ft_intlen_intmax.o \
-		ft_intlen_uintmax.o \
 		ft_itoa_64.o \
-		ft_itoa_u64.o \
-		ft_itoa_u.o \
-		ft_intlen_u.o \
-		ft_intlen_o.o \
-		ft_itoa_o.o \
-		ft_intlen_h.o \
-		ft_itoa_h.o \
 		ft_itoa.o \
+		ft_itoa_base.o \
+		ft_itoa_base64.o \
 		ft_intlen.o \
+		ft_intlen_64.o \
+		ft_intlen_base.o \
+		ft_intlen_base64.o \
 		ft_putstr.o \
 		ft_bzero.o \
 		ft_strchr.o \
@@ -124,14 +111,11 @@ PT_O =	ft_call_arg.o \
 		ft_isdigit.o \
 		ft_strcpy.o \
 		ft_strlen.o \
-		ft_itoa_llh.o \
-		ft_intlen_llh.o \
 		ft_strncat.o \
-		ft_intlen_llo.o \
-		ft_itoa_llo.o \
 		ft_strlnccat.o \
 		ft_strcat_p.o \
-		ft_realloc_adr_p.o
+		ft_realloc_adr_p.o \
+		ft_strupper.o
 
 all : $(NAME)
 

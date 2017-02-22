@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/21 18:56:10 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 16:40:45 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,22 +97,15 @@ void			ft_strputnchr(char **str, char c, int n);
 char			*ft_strccat(char *dest, char *src, char c);
 int				ft_strclen(char *str, char c);
 char			*ft_strnccat(char *dest, char c, int n);
-int				ft_intlen_uintmax(uint64_t n);
-int				ft_intlen_intmax(int64_t n);
+int				ft_intlen_64(int64_t n);
 char			*ft_itoa_64(int64_t n);
-char			*ft_itoa_u64(uint64_t n);
-char			*ft_itoa_u(unsigned int n);
-int				ft_intlen_u(unsigned int n);
-int				ft_intlen_o(unsigned int n);
-char			*ft_itoa_o(unsigned int n);
-char			*ft_itoa_h(unsigned int n, int up);
-int				ft_intlen_h(unsigned int n);
-int				ft_intlen_llh(uint64_t n);
-char			*ft_itoa_llh(uint64_t n, uint64_t up);
-int				ft_intlen_llo(uint64_t n);
-char			*ft_itoa_llo(uint64_t n);
 char			*ft_strlnccat(char *dest, char c,int *start, int len);
 char			*ft_strcat_p(char *dest, const char *src, int len);
 int				ft_realloc_adr_p(char **str, int size, int len);
+char			*ft_itoa_base(unsigned int nb, int base);
+int				ft_intlen_base(unsigned int n, int base);
+char			*ft_itoa_base64(uint64_t nb, int base);
+int				ft_intlen_base64(uint64_t n, int base);
+char			*ft_strupper(char *s);
 
 #endif

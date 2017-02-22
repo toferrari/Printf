@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen_u.c                                      :+:      :+:    :+:   */
+/*   ft_strupper.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 11:30:33 by tferrari         ###   ########.fr       */
+/*   Created: 2017/02/22 16:38:23 by tferrari          #+#    #+#             */
+/*   Updated: 2017/02/22 16:41:31 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_intlen_u(unsigned int n)
+char		*ft_strupper(char *s)
 {
-	int		len;
+	int i;
 
-	len = 1;
-	while (n > 9)
+	i = 0;
+	while (s[i])
 	{
-		len++;
-		n = n / 10;
+		if (s[i] >= 'a' && s[i] <= 'z')
+			s[i] -= 32;
+		i++;
 	}
-	return (len);
+	return (s);
 }

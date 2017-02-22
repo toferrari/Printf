@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:40:56 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/17 08:49:50 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 18:31:17 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void	ft_moin_on(char **str, t_print ptf, uint64_t nb, int i)
 	if (i == 2)
 		*str = (ptf.c == 'X') ? ft_strcat(*str, "0X") : ft_strcat(*str, "0x");
 	if (ptf.accuracy > 0)
-		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_llh(nb));
-	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_itoa_llh(nb, 1)) :
-	ft_strcat(*str, ft_itoa_llh(nb, 0));
+		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base64(nb, 16));
+	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_strupper(ft_itoa_base64(nb, 16))) :
+	ft_strcat(*str, ft_itoa_base64(nb, 16));
 	if (ptf.accuracy == 0)
-		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_llh(nb) - i);
+		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_base64(nb, 16) - i);
 	else
 		*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - i);
 }
@@ -30,22 +30,22 @@ static void	ft_moin_on(char **str, t_print ptf, uint64_t nb, int i)
 static void	ft_moin_off(char **str, t_print ptf, uint64_t nb, int i)
 {
 	if (ptf.accuracy == 0)
-		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_llh(nb) - i);
+		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_base64(nb, 16) - i);
 	else
 		*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - i);
 	if (i == 2)
 		*str = (ptf.c == 'X') ? ft_strcat(*str, "0X") : ft_strcat(*str, "0x");
 	if (ptf.accuracy > 0)
-		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_llh(nb));
-	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_itoa_llh(nb, 1)) :
-	ft_strcat(*str, ft_itoa_llh(nb, 0));
+		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base64(nb, 16));
+	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_strupper(ft_itoa_base64(nb, 16))) :
+	ft_strcat(*str, ft_itoa_base64(nb, 16));
 }
 
 static int	ft_convert_len_acc(t_print ptf, uint64_t nb)
 {
 	int len;
 
-	len = ft_intlen_llh(nb);
+	len = ft_intlen_base64(nb, 16);
 	if (ptf.zero > len || ptf.accuracy > len)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
 	if (ptf.accuracy == 0 && ptf.zero == 0 && ptf.htag == 1)
@@ -59,7 +59,7 @@ int			ft_flag_llhexa(t_print ptf, uint64_t nb, char **str)
 	int i;
 
 	len = ft_convert_len_acc(ptf, nb);
-	ft_realloc_adr(str, len);
+	ft_realloc_adr_p(str, len, ptf.ret);
 	i = (ptf.htag == 1) ? 2 : 0;
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, nb, i);

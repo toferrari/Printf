@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_u64.c                                      :+:      :+:    :+:   */
+/*   ft_intlen_intmax.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/10 17:04:47 by tferrari         ###   ########.fr       */
+/*   Created: 2017/02/10 14:19:31 by tferrari          #+#    #+#             */
+/*   Updated: 2017/02/22 15:07:51 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_u64(uint64_t n)
+int		ft_intlen_64(int64_t n)
 {
-	uint64_t	len;
-	uint64_t	end;
-	uint64_t	i;
-	char		*s;
+	int64_t		len;
 
-	len = ft_intlen_uintmax(n);
-	i = 0;
-	if (!(s = ft_strnew(len)))
-		return (NULL);
-	end = len;
-	while (i < len)
+	len = (n < 0) ? 2 : 1;
+	while (((n) > 9) || ((n) < -9))
 	{
-		s[len - 1] = n % 10 + 48;
+		len++;
 		n = n / 10;
-		len--;
 	}
-	s[end] = '\0';
-	return (s);
+	return (len);
 }

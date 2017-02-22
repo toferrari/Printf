@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/21 20:31:07 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 18:48:44 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int			ft_flag_hd(t_print ptf, int nb, char **str);
 int			ft_flag_chr(t_print ptf, char c, char **str);
 int			ft_flag_c_null(t_print ptf, char **format, char **str);
 int			ft_flag_p(t_print ptf, uint64_t nb, char **str);
-int			ft_flag_hhd(t_print ptf, int nb, char **str);
-int			ft_flag_hh(t_print ptf, char nb, char **str);
+int			ft_flag_hhd(t_print ptf, char nb, char **str);
 int			ft_flag_hhu(t_print ptf, unsigned char nb, char **str);
 int			ft_flag_hho(t_print ptf, unsigned char nb, char **str);
 int			ft_flag_hhx(t_print ptf, unsigned char nb, char **str);

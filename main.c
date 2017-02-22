@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 18:05:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/21 20:29:38 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 19:00:18 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main(void)
 	//unsigned long long ULLONG_MAX = 18446744073709551615;
 	int64_t u = 5;
 	char t[50] = "salut tu vas bien?";
-	char c = 'f';
+	//char c = 'f';
 	int j;
 
 	//t = ft_strdup("salut tu vas bien?");
@@ -35,10 +35,10 @@ int main(void)
 	//printf("%S", L"Some String");
 	//i = printf("le vrai :%c", c);
 	printf("le vrai :");
-	i = printf("{%+03d}", 0);
+	i = printf("{%3c}", 0);
 	printf("\ni_vrai = %d", i);
 	ft_putstr("le mien :");
-	j = ft_printf("{%+03d}", 0);
+	j = ft_printf("{%3c}", 0);
 	ft_putchar('\n');
 	ft_putstrnbr("i_mien =", j);
 	//i = printf("\n%hhd\n", SHRT_MAX);

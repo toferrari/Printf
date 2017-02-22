@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_llo.c                                      :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/02 19:37:12 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/16 18:20:56 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 18:11:32 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa_llo(uint64_t n)
-{
-	int		len;
-	int		end;
-	int		i;
-	char	*s;
+#define MODULO(x) (x <= 9) ? (x + '0') : (x - 10 + 'a');
 
-	len = ft_intlen_llo(n);
-	i = 0;
+char	*ft_itoa_base(unsigned int nb, int base)
+{
+	int				len;
+	char			*s;
+
+	len = ft_intlen_base(nb, base);
 	if (!(s = ft_strnew(len)))
 		return (NULL);
-	end = len;
-	while (i < len)
+	while (0 < len)
 	{
-		s[len - 1] = n % 8 + 48;
-		n = n / 8;
+		s[len - 1] = MODULO(nb % base);
+		nb = nb / base;
 		len--;
 	}
-	s[end] = '\0';
 	return (s);
 }

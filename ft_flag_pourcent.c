@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/11 17:04:51 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 16:28:59 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		ft_flag_pourcent(t_print ptf, char **str)
 	len = 1;
 	if (ptf.accuracy > 1 || ptf.zero > 1)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
-	ft_realloc_adr(str, len);
+	ft_realloc_adr_p(str, len, ptf.ret);
 	if (ptf.moins == 1)
 	{
 		*str = ft_strcat(*str, "%");
