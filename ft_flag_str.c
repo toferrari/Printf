@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/22 16:29:26 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 21:16:41 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ int			ft_flag_str(t_print ptf, char *src, char **str)
 			*str = ft_strnccat(*str, '0', ptf.accuracy - ft_strlen(src));
 			*str = ft_strncat(*str, src, ptf.accuracy);
 			*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy);
-			//len = (ptf.zero > ptf.accuracy) ? ptf.zero : len - ptf.accuracy;
 		}
 		else
-			{*str = ft_strcat(*str, src);
-			*str = ft_strnccat(*str, ' ', ptf.zero - ft_strlen(src));}
+		{
+			*str = ft_strcat(*str, src);
+			*str = ft_strnccat(*str, ' ', ptf.zero - ft_strlen(src));
+		}
 	}
 	else
 	{
@@ -65,7 +66,6 @@ int			ft_flag_str(t_print ptf, char *src, char **str)
 		{
 			*str = ft_strnccat(*str, '0', ptf.accuracy - ft_strlen(src));
 			*str = ft_strncat(*str, src, ptf.accuracy);
-			//len = (ptf.zero > ptf.accuracy) ? ptf.zero : len - ptf.accuracy;
 		}
 		else if (ptf.bool_acc == 1)
 			*str = ft_strncat(*str, src, ptf.accuracy);

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/22 15:40:01 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/01 16:32:30 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int			ft_flag_c_null(t_print ptf, char **format, char **str)
 {
-	int len;
-	char c;
+	int		len;
+	char	c;
 
 	len = 1;
 	c = (*format)[-1];

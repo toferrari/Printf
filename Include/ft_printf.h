@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/22 18:48:44 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/02 17:57:39 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-#include <stdio.h>
-#include <stdint.h>
+# include <wchar.h>
+# include <stdio.h>
+# include <stdint.h>
 
 typedef	struct	s_struct
 {
@@ -28,7 +29,7 @@ typedef	struct	s_struct
 	int			width;
 	int			h;
 	int			l;
-	int			L;
+	int			L_flag;
 	int			space;
 	int			z;
 	int			j;
@@ -54,6 +55,7 @@ int			ft_flag_str(t_print ptf, char *src, char **str);
 int			ft_flag_llhexa(t_print ptf, uint64_t nb, char **str);
 int			ft_flag_llo(t_print ptf, uint64_t nb, char **str);
 int			ft_flag_hd(t_print ptf, int nb, char **str);
+int			ft_flag_ho(t_print ptf, unsigned short nb, char **str);
 int			ft_flag_chr(t_print ptf, char c, char **str);
 int			ft_flag_c_null(t_print ptf, char **format, char **str);
 int			ft_flag_p(t_print ptf, uint64_t nb, char **str);
@@ -61,5 +63,8 @@ int			ft_flag_hhd(t_print ptf, char nb, char **str);
 int			ft_flag_hhu(t_print ptf, unsigned char nb, char **str);
 int			ft_flag_hho(t_print ptf, unsigned char nb, char **str);
 int			ft_flag_hhx(t_print ptf, unsigned char nb, char **str);
+int			ft_flag_wchr(t_print ptf, wchar_t c, char **str);
+int			ft_flag_wstr(t_print ptf, wchar_t *src, char **str);
+char		*ft_wchar_to_char(wchar_t c, char *dest);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:33:13 by tferrari          #+#    #+#             */
-/*   Updated: 2017/01/16 18:35:29 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/02/22 21:04:31 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void	ft_putstrnbr(char *str, int nb)
 	ft_putstr(str);
 	ft_putchar(' ');
 	ft_putnbr(nb);
-	ft_putendl(" :");
+	ft_putchar('\n');
 }

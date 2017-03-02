@@ -6,7 +6,7 @@
 #    By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/14 16:19:10 by tferrari          #+#    #+#              #
-#    Updated: 2017/02/22 17:36:05 by tferrari         ###   ########.fr        #
+#    Updated: 2017/03/02 19:16:32 by tferrari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -15,11 +15,13 @@ NAME = libftprintf.a
 
 SRC =	ft_call_arg.c \
 		ft_convert_signe.c \
+		ft_wchar_to_char.c \
 		ft_flag_d.c \
 		ft_flag_hhu.c \
 		ft_flag_hho.c \
 		ft_flag_hhx.c \
 		ft_flag_hd.c \
+		ft_flag_ho.c \
 		ft_flag_hexa.c \
 		ft_flag_lld.c \
 		ft_flag_llu.c \
@@ -31,6 +33,8 @@ SRC =	ft_call_arg.c \
 		ft_flag_llhexa.c \
 		ft_flag_c_null.c \
 		ft_flag_chr.c \
+		ft_flag_wchr.c \
+		ft_flag_wstr.c \
 		ft_flag_hhd.c \
 		ft_flag_llo.c \
 		ft_flag_p.c \
@@ -63,15 +67,22 @@ SRC =	ft_call_arg.c \
 		Libft/ft_strlnccat.c \
 		Libft/ft_strcat_p.c \
 		Libft/ft_realloc_adr_p.c \
-		Libft/ft_strupper.c
+		Libft/ft_strupper.c \
+		Libft/ft_wchar_len.c \
+		Libft/ft_strcpy_p.c \
+		Libft/ft_strccat_p.c \
+		Libft/ft_wchrcat.c \
+		libft/ft_wstr_len.c
 
 PT_O =	ft_call_arg.o \
 		ft_convert_signe.o \
+		ft_wchar_to_char.o \
 		ft_flag_d.o \
 		ft_flag_hhu.o \
 		ft_flag_hho.o \
 		ft_flag_hhx.o \
 		ft_flag_hd.o \
+		ft_flag_ho.o \
 		ft_flag_hexa.o \
 		ft_flag_lld.o \
 		ft_flag_llu.o \
@@ -83,6 +94,8 @@ PT_O =	ft_call_arg.o \
 		ft_flag_llhexa.o \
 		ft_flag_c_null.o \
 		ft_flag_chr.o \
+		ft_flag_wchr.o \
+		ft_flag_wstr.o \
 		ft_flag_hhd.o \
 		ft_flag_llo.o \
 		ft_flag_p.o \
@@ -115,7 +128,12 @@ PT_O =	ft_call_arg.o \
 		ft_strlnccat.o \
 		ft_strcat_p.o \
 		ft_realloc_adr_p.o \
-		ft_strupper.o
+		ft_strupper.o \
+		ft_wchar_len.o \
+		ft_strcpy_p.o \
+		ft_strccat_p.o \
+		ft_wchrcat.o \
+		ft_wstr_len.o
 
 all : $(NAME)
 

@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc_adr_p.c                                 :+:      :+:    :+:   */
+/*   ft_wchar_to_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/16 18:39:27 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/02 15:34:41 by tferrari         ###   ########.fr       */
+/*   Created: 2017/03/02 17:30:48 by tferrari          #+#    #+#             */
+/*   Updated: 2017/03/02 18:30:00 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include "libft.h"
 
-int		ft_realloc_adr_p(char **str, int size, int len)
+char		*ft_wchar_to_char(wchar_t c, char *dest)
 {
-	char		*tmp;
+	int		chr_len;
+	int		i;
 
-	if (size < 0)
-		return (0);
-	if (size == 0)
-		return (0);
-	if (!(tmp = ft_strnew(len)))
-		return (0);
-	tmp = ft_strcpy_p(tmp, *str, len);
-	ft_memdel((void **)str);
-	if (!(*str = ft_strnew(len + size)))
-		return (0);
-	*str = ft_strcpy_p(*str, tmp, len);
-	ft_memdel((void **)&tmp);
-	tmp = NULL;
-	return (1);
+	chr_len = ft_wchar_len(c);
+	i = 1;
+	if (chr_len > 1)
+	{
+		while (i < chr_len)
+		{
+			dest[chr_len - i] = (c & 0x3F);
+			dest[chr_len - i] += 0x80;
+			c = c >> 6;
+			i++;
+		}
+		dest[0] = (0xF0 << (4 - chr_len) | c);
+	}
+	else
+		dest[0] = c;
+	return (dest);
 }

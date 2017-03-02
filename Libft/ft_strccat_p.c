@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc_adr_p.c                                 :+:      :+:    :+:   */
+/*   ft_strccat_p.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/16 18:39:27 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/02 15:34:41 by tferrari         ###   ########.fr       */
+/*   Created: 2017/02/08 14:36:02 by tferrari          #+#    #+#             */
+/*   Updated: 2017/03/02 14:06:06 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_realloc_adr_p(char **str, int size, int len)
+char	*ft_strccat_p(char *dest, char *src, char c, int start)
 {
-	char		*tmp;
+	int i;
 
-	if (size < 0)
-		return (0);
-	if (size == 0)
-		return (0);
-	if (!(tmp = ft_strnew(len)))
-		return (0);
-	tmp = ft_strcpy_p(tmp, *str, len);
-	ft_memdel((void **)str);
-	if (!(*str = ft_strnew(len + size)))
-		return (0);
-	*str = ft_strcpy_p(*str, tmp, len);
-	ft_memdel((void **)&tmp);
-	tmp = NULL;
-	return (1);
+	i = 0;
+	while (src[i] && src[i] != c)
+	{
+		dest[start + i] = src[i];
+		i++;
+	}
+	dest[start + i] = '\0';
+	return (dest);
 }

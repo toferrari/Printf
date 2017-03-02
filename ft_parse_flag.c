@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/21 19:45:29 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/02 13:44:33 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	ft_flag(char ***format, t_print *s_ptf)
 	while (!(ft_isdigit((**format)[j])))
 		j++;
 	if (((**format)[j] == '0' && (**format)[i] != '.' && s_ptf->moins == 0) ||
-	((**format)[j] == '0' && (**format)[i] == '.' && (**format)[i + 1] == 'c'))
+	((**format)[j] == '0' && (**format)[i] == '.' && ft_strchr("cC", s_ptf->c)))
 	{
 		s_ptf->accuracy = s_ptf->zero;
 		s_ptf->zero = 0;
@@ -81,7 +81,7 @@ static void	ft_length(char **format, t_print *s_ptf)
 		else if ((*format)[i] == 'h')
 			s_ptf->h++;
 		else if ((*format)[i] == 'L')
-			s_ptf->L = 1;
+			s_ptf->L_flag = 1;
 		else if ((*format)[i] == 'j')
 			s_ptf->j = 1;
 		else if ((*format)[i] == 'z')
@@ -116,6 +116,5 @@ int			ft_parse_flag(char **format, va_list *arg, char **str, int ret)
 	ft_convert(format, &argument);
 	argument.ret = ret;
 	len_flag = ft_call_arg(arg, str, argument, format);
-
 	return (len_flag);
 }
