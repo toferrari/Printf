@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/02 21:58:58 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/03 12:10:01 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,16 @@ int			ft_flag_wstr(t_print ptf, wchar_t *src, char **str)
 		tmp = ft_wchar_to_char(src[i], tmp);
 		dest = ft_strcat(dest, tmp);
 		ft_memdel((void **)&tmp);
+		if (ptf.accuracy > 0 && len + ft_wchar_len(src[i] > ptf.accuracy)
+		&& ptf.accuracy < ptf.zero)
+		{
+			ptf.accuracy += ptf.accuracy - len;
+			break;
+		}
 		len += ft_wchar_len(src[i]);
 		i++;
 	}
-	ft_putnbr(i);
+
 	if (ptf.moins == 1)
 	{
 		if (ptf.accuracy > 0 && ft_strlen(dest) > 0)

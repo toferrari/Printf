@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/02 17:57:39 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/03 14:52:31 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include <wchar.h>
 # include <stdio.h>
 # include <stdint.h>
+
+# define RED "\x1b[31m"
+# define GREEN "\x1b[32m"
+# define YELLOW "\x1b[33m"
+# define BLUE "\x1b[34m"
+# define MAGENTA "\x1b[35m"
+# define CYAN "\x1b[36m"
+# define RESET "\x1b[0m"
 
 typedef	struct	s_struct
 {
@@ -35,6 +43,7 @@ typedef	struct	s_struct
 	int			j;
 	char		c;
 	int			ret;
+	int			color;
 
 }				t_print;
 

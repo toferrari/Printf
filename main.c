@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 18:05:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/02 22:01:40 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/03 14:52:53 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int main(void)
 	t[0] = b;
 	setlocale(LC_ALL,"");
 	printf("le vrai :");
-	i = printf("{%010d}", 42);
+	i = printf("\x1b[31m{%010d}", -42);
 	printf("\ni_vrai = %d", i);
 	ft_putstr("le mien :");
-	j = ft_printf("{%010d}", 42);
+	j = ft_printf("{%010d}", -42);
 	ft_putchar('\n');
 	ft_putstrnbr("i_mien =", j);
 	//ft_putchar('\n');

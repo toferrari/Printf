@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/02 13:44:33 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/03 15:09:03 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,13 @@ int			ft_parse_flag(char **format, va_list *arg, char **str, int ret)
 
 	len_flag = 0;
 	ft_bzero(&argument, sizeof(argument));
+	argument.ret = ret;
 	ft_flag(&format, &argument);
 	ft_accuracy(format, &argument);
 	ft_length(format, &argument);
 	ft_flag(&format, &argument);
 	ft_convert(format, &argument);
-	argument.ret = ret;
 	len_flag = ft_call_arg(arg, str, argument, format);
+	argument.ret = ret + len_flag;
 	return (len_flag);
 }
