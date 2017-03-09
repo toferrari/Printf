@@ -6,14 +6,12 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 19:21:07 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/09 21:18:17 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 #include "ft_printf.h"
-#include <locale.h>
 
 static int	ft_0_pourcent(char **str, char *format, int ret)
 {

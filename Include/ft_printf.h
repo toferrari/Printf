@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 13:58:10 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/09 21:17:27 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include <wchar.h>
-# include <stdio.h>
 # include <stdint.h>
 
 typedef	struct	s_struct
