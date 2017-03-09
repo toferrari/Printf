@@ -6,14 +6,39 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 18:31:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/02 17:05:38 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/09 14:03:11 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int		ft_call_arg(va_list *arg, char **str, t_print ptf, char **format)
+static int	ft_call_arg2(va_list *arg, char **str, t_print ptf)
+{
+	if (ft_strchr("oO", ptf.c) && (ptf.l > 0 || ptf.j == 1 || ptf.z == 1))
+		return (ft_flag_llo(ptf, (uint64_t)va_arg(*arg, long long), str));
+	else if (ptf.h == 1 && ft_strchr("o", ptf.c))
+		return (ft_flag_ho(ptf, (unsigned short)va_arg(*arg, int), str));
+	else if (ft_strchr("o", ptf.c))
+		return (ft_flag_octal(ptf, va_arg(*arg, unsigned int), str));
+	else if (ft_strchr("xX", ptf.c) && (ptf.l > 0 || ptf.j == 1 || ptf.z == 1))
+		return (ft_flag_llhexa(ptf, (uint64_t)va_arg(*arg, long long), str));
+	else if (ft_strchr("p", ptf.c))
+		return (ft_flag_p(ptf, (uint64_t)va_arg(*arg, long long), str));
+	else if (ft_strchr("xX", ptf.c))
+		return (ft_flag_hexa(ptf, va_arg(*arg, unsigned int), str));
+	else if (ptf.c == 'S' || (ptf.c == 's' && ptf.l == 1))
+		return (ft_flag_wstr(ptf, va_arg(*arg, wchar_t *), str));
+	else if (ft_strchr("s", ptf.c))
+		return (ft_flag_str(ptf, va_arg(*arg, char *), str));
+	else if ((ptf.c == 'c' && ptf.l == 1) || ptf.c == 'C')
+		return (ft_flag_wchr(ptf, (wchar_t)va_arg(*arg, int), str));
+	else if (ptf.c == 'c')
+		return (ft_flag_chr(ptf, (char)va_arg(*arg, int), str));
+	return (0);
+}
+
+int			ft_call_arg(va_list *arg, char **str, t_print ptf, char **format)
 {
 	if (ft_strchr("DOU", ptf.c))
 		ptf.l = 1;
@@ -39,25 +64,5 @@ int		ft_call_arg(va_list *arg, char **str, t_print ptf, char **format)
 		return (ft_flag_u(ptf, va_arg(*arg, unsigned int), str));
 	else if (ptf.c == '%')
 		return (ft_flag_pourcent(ptf, str));
-	else if (ft_strchr("oO", ptf.c) && (ptf.l > 0 || ptf.j == 1 || ptf.z == 1))
-		return (ft_flag_llo(ptf, (uint64_t)va_arg(*arg, long long), str));
-	else if (ptf.h == 1 && ft_strchr("o", ptf.c))
-		return (ft_flag_ho(ptf, (unsigned short)va_arg(*arg, int), str));
-	else if (ft_strchr("o", ptf.c))
-		return (ft_flag_octal(ptf, va_arg(*arg, unsigned int), str));
-	else if (ft_strchr("xX", ptf.c) && (ptf.l > 0 || ptf.j == 1 || ptf.z == 1))
-		return (ft_flag_llhexa(ptf, (uint64_t)va_arg(*arg, long long), str));
-	else if (ft_strchr("p", ptf.c))
-		return (ft_flag_p(ptf, (uint64_t)va_arg(*arg, long long), str));
-	else if (ft_strchr("xX", ptf.c))
-		return (ft_flag_hexa(ptf, va_arg(*arg, unsigned int), str));
-	else if (ptf.c == 'S' || (ptf.c == 's' && ptf.l == 1))
-		return (ft_flag_wstr(ptf, va_arg(*arg, wchar_t *), str));
-	else if (ft_strchr("s", ptf.c))
-		return (ft_flag_str(ptf, va_arg(*arg, char *), str));
-	else if ((ptf.c == 'c' && ptf.l == 1) || ptf.c == 'C')
-		return (ft_flag_wchr(ptf, (wchar_t)va_arg(*arg, int), str));
-	else if (ptf.c == 'c')
-		return (ft_flag_chr(ptf, (char)va_arg(*arg, int), str));
-	return (0);
+	return (ft_call_arg2(arg, str, ptf));
 }

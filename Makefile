@@ -6,7 +6,7 @@
 #    By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/14 16:19:10 by tferrari          #+#    #+#              #
-#    Updated: 2017/03/02 19:16:32 by tferrari         ###   ########.fr        #
+#    Updated: 2017/03/09 13:51:13 by tferrari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -16,6 +16,7 @@ NAME = libftprintf.a
 SRC =	ft_call_arg.c \
 		ft_convert_signe.c \
 		ft_wchar_to_char.c \
+		ft_flag.c \
 		ft_flag_d.c \
 		ft_flag_hhu.c \
 		ft_flag_hho.c \
@@ -77,6 +78,7 @@ SRC =	ft_call_arg.c \
 PT_O =	ft_call_arg.o \
 		ft_convert_signe.o \
 		ft_wchar_to_char.o \
+		ft_flag.o \
 		ft_flag_d.o \
 		ft_flag_hhu.o \
 		ft_flag_hho.o \

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/02 19:12:03 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/09 13:20:58 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int			ft_printf(char *format, ...)
 	va_start(arg, format);
 	ret = 0;
 	ret = ft_parse(format, &arg, ret, &str);
-	setlocale(LC_ALL,"");
 	if (ret != -1)
 		write(1, str, ret);
 	va_end(arg);

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:40:56 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/22 18:31:17 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/08 18:13:40 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	ft_moin_on(char **str, t_print ptf, uint64_t nb, int i)
 		*str = (ptf.c == 'X') ? ft_strcat(*str, "0X") : ft_strcat(*str, "0x");
 	if (ptf.accuracy > 0)
 		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base64(nb, 16));
-	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_strupper(ft_itoa_base64(nb, 16))) :
-	ft_strcat(*str, ft_itoa_base64(nb, 16));
+	*str = (ptf.c == 'X') ? ft_strcat(*str, ft_strupper(ptf.tmp)) :
+	ft_strcat(*str, ptf.tmp);
 	if (ptf.accuracy == 0)
 		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_base64(nb, 16) - i);
 	else
@@ -37,8 +37,8 @@ static void	ft_moin_off(char **str, t_print ptf, uint64_t nb, int i)
 		*str = (ptf.c == 'X') ? ft_strcat(*str, "0X") : ft_strcat(*str, "0x");
 	if (ptf.accuracy > 0)
 		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base64(nb, 16));
-	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_strupper(ft_itoa_base64(nb, 16))) :
-	ft_strcat(*str, ft_itoa_base64(nb, 16));
+	*str = (ptf.c == 'X') ? ft_strcat(*str, ft_strupper(ptf.tmp)) :
+	ft_strcat(*str, ptf.tmp);
 }
 
 static int	ft_convert_len_acc(t_print ptf, uint64_t nb)
@@ -59,11 +59,13 @@ int			ft_flag_llhexa(t_print ptf, uint64_t nb, char **str)
 	int i;
 
 	len = ft_convert_len_acc(ptf, nb);
+	ptf.tmp = ft_itoa_base64(nb, 16);
 	ft_realloc_adr_p(str, len, ptf.ret);
 	i = (ptf.htag == 1) ? 2 : 0;
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, nb, i);
 	else
 		ft_moin_off(str, ptf, nb, i);
+	ft_memdel((void **)&ptf.tmp);
 	return (len);
 }

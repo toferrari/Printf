@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:40:56 by tferrari          #+#    #+#             */
-/*   Updated: 2017/02/22 16:18:49 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/08 18:14:59 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	ft_moin_on(char **str, t_print ptf, uint64_t nb, int i)
 		*str = ft_strcat(*str, "0");
 	if (ptf.accuracy > 0)
 		*str = ft_strnccat(*str, '0', ptf.accuracy - ft_intlen_base64(nb, 8));
-	*str = (ptf.c == 'X') ?  ft_strcat(*str, ft_itoa_base64(nb, 8)) :
-	ft_strcat(*str, ft_itoa_base64(nb, 8));
+	*str = (ptf.c == 'X') ? ft_strcat(*str, ptf.tmp) :
+	ft_strcat(*str, ptf.tmp);
 	if (ptf.accuracy == 0)
 		*str = ft_strnccat(*str, ' ', ptf.zero - ft_intlen_base64(nb, 8) - i);
 	else
@@ -41,9 +41,9 @@ static void	ft_moin_off(char **str, t_print ptf, uint64_t nb, int i)
 	if (ptf.accuracy == 0 && i == 1 && nb != 0)
 		*str = ft_strcat(*str, "0");
 	if (nb != 0)
-		*str = ft_strcat(*str, ft_itoa_base64(nb, 8));
+		*str = ft_strcat(*str, ptf.tmp);
 	else if (nb == 0 && ptf.zero == 0 && ptf.accuracy == 0 && ptf.bool_acc == 0)
-		*str = ft_strcat(*str, ft_itoa_base64(nb, 8));
+		*str = ft_strcat(*str, ptf.tmp);
 }
 
 static int	ft_convert_len_acc(t_print ptf, uint64_t nb)
@@ -56,7 +56,7 @@ static int	ft_convert_len_acc(t_print ptf, uint64_t nb)
 	if (ptf.zero > len || ptf.accuracy > len)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
 	if (ptf.accuracy == 0 && ptf.zero == 0 && ptf.htag == 1)
-		len ++;
+		len++;
 	return (len);
 }
 
@@ -66,11 +66,13 @@ int			ft_flag_llo(t_print ptf, uint64_t nb, char **str)
 	int i;
 
 	len = ft_convert_len_acc(ptf, nb);
+	ptf.tmp = ft_itoa_base64(nb, 8);
 	ft_realloc_adr_p(str, len, ptf.ret);
 	i = ptf.htag;
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, nb, i);
 	else
 		ft_moin_off(str, ptf, nb, i);
+	ft_memdel((void **)&ptf.tmp);
 	return (len);
 }
