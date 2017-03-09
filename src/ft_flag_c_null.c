@@ -6,11 +6,11 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/08 16:03:54 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/09 17:56:50 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/ft_printf.h"
+#include "ft_printf.h"
 #include "libft.h"
 
 int			ft_flag_c_null(t_print ptf, char **format, char **str)

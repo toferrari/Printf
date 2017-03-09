@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flag_llu.c                                      :+:      :+:    :+:   */
+/*   ft_flag_lld.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 13:18:19 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/09 17:56:24 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/ft_printf.h"
+#include "ft_printf.h"
 #include "libft.h"
 
-static void	ft_moin_on(char **str, t_print ptf, uint64_t nb, uint64_t len)
+static void	ft_moin_on(char **str, t_print ptf, int64_t nb, int64_t len)
 {
-	int intlen;
+	uint64_t	unb;
+	int64_t		intlen;
 
-	intlen = ft_intlen_base64(nb, 10);
+	unb = (nb < 0) ? (uint64_t)-nb : nb;
+	intlen = ft_intlen_base64(unb, 10);
+	*str = (nb < 0) ? ft_strcat(*str, "-") : *str;
 	if (ptf.accuracy > 0)
 		*str = ft_strnccat(*str, '0', ptf.accuracy - intlen);
 	*str = ft_strcat(*str, ptf.tmp);
@@ -27,24 +30,27 @@ static void	ft_moin_on(char **str, t_print ptf, uint64_t nb, uint64_t len)
 		*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - len);
 }
 
-static void	ft_moin_off(char **str, t_print ptf, uint64_t nb, uint64_t len)
+static void	ft_moin_off(char **str, t_print ptf, int64_t nb, int64_t len)
 {
-	int intlen;
+	uint64_t	unb;
+	int64_t		intlen;
 
-	intlen = ft_intlen_base64(nb, 10);
+	unb = (nb < 0) ? (uint64_t)-nb : nb;
+	intlen = ft_intlen_base64(unb, 10);
 	if (ptf.accuracy == 0)
 		*str = ft_strnccat(*str, ' ', ptf.zero - intlen - len);
 	else
 		*str = ft_strnccat(*str, ' ', ptf.zero - ptf.accuracy - len);
+	*str = (nb < 0) ? ft_strcat(*str, "-") : *str;
 	*str = ft_strnccat(*str, '0', ptf.accuracy - intlen);
 	*str = ft_strcat(*str, ptf.tmp);
 }
 
-static int	ft_convert_len_acc_ll(t_print ptf, uint64_t nb)
+static int	ft_convert_len_acc_ll(t_print ptf, int64_t nb)
 {
 	int64_t len;
 
-	len = ft_intlen_base64(nb, 10);
+	len = ft_intlen_64(nb);
 	if (ptf.zero > len || ptf.accuracy > len)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
 	if (ptf.space == 1 || ptf.plus == 1)
@@ -52,15 +58,18 @@ static int	ft_convert_len_acc_ll(t_print ptf, uint64_t nb)
 	return (len);
 }
 
-int			ft_flag_llu(t_print ptf, uint64_t nb, char **str)
+int			ft_flag_lld(t_print ptf, int64_t nb, char **str)
 {
 	int64_t		len;
 	int			i;
+	uint64_t	unb;
 
+	unb = (nb < 0) ? (uint64_t)-nb : nb;
+	ptf.tmp = ft_itoa_base64(unb, 10);
 	len = ft_convert_len_acc_ll(ptf, nb);
-	ptf.tmp = ft_itoa_base64(nb, 10);
 	ft_realloc_adr_p(str, len, ptf.ret);
 	i = ft_convert_signe(str, ptf, nb);
+	i += (nb < 0) ? 1 : 0;
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, nb, i);
 	else

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 16:51:19 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 13:56:13 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/09 18:40:55 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void	ft_accuracy(char **format, t_print *s_ptf)
 			s_ptf->accuracy = s_ptf->accuracy * 10 + ((*format)[i] - '0');
 			i++;
 		}
+		while (ft_isdigit((*format)[i]) || (*format)[i] == '.')
+			i++;
 		if (ft_strchr("%", (*format)[i]))
 			s_ptf->accuracy = 0;
 		*format += i;

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 13:40:04 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 13:47:01 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/09 18:46:36 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ void		ft_flag(char ***format, t_print *s_ptf)
 			s_ptf->plus = 1;
 		else if ((**format)[i] == ' ')
 			s_ptf->space = 1;
-		else if (ft_isdigit((**format)[i]))
+		else if (ft_isdigit((**format)[i]) && (ft_isdigit((**format)[i - 1]) ||
+		s_ptf->zero == 0))
 			s_ptf->zero = s_ptf->zero * 10 + ((**format)[i] - '0');
 		i++;
 	}
