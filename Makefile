@@ -6,7 +6,7 @@
 #    By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/09 15:34:20 by tferrari          #+#    #+#              #
-#    Updated: 2017/03/09 18:02:05 by tferrari         ###   ########.fr        #
+#    Updated: 2017/03/09 21:07:36 by tferrari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,6 @@ clean:
 fclean: clean
 	@rm -f $(NAME)
 	@rm -f Libft/libft.a
-	@echo "Librairie supprimé"
+	@echo ".a supprimé"
 
 re: fclean all
