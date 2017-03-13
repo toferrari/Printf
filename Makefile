@@ -6,7 +6,7 @@
 #    By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/09 15:34:20 by tferrari          #+#    #+#              #
-#    Updated: 2017/03/09 21:07:36 by tferrari         ###   ########.fr        #
+#    Updated: 2017/03/13 15:47:58 by tferrari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(LFT):
 
 $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
-	@gcc -Wall -Werror -Wextra -ILibft  -IInclude -ILibft -c -o $@ $<
+	@gcc -Wall -Werror -Wextra -IInclude -ILibft -c -o $@ $<
 	@echo "Fichier" $< "recompilé."
 
 clean:
