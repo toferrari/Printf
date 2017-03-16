@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 13:17:16 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/14 16:41:02 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,15 @@ int			ft_flag_str(t_print ptf, char *src, char **str)
 {
 	int	len;
 	int	lenstr;
+	int	i;
 
+	i = 0;
 	if (!src)
 	{
-		ft_realloc_adr_p(str, 6, ptf.ret);
-		*str = ft_strcat(*str, "(null)");
-		return (6);
+		if (!(src = ft_strnew(6)))
+			return (0);
+		src = ft_strcpy(src, "(null)");
+		i = 1;
 	}
 	lenstr = ft_strlen(src);
 	len = ft_convert_len_acc(ptf, src);
@@ -80,5 +83,7 @@ int			ft_flag_str(t_print ptf, char *src, char **str)
 		ft_moin_on(str, ptf, lenstr, src);
 	else
 		ft_moin_off(str, ptf, lenstr, src);
+	if (i == 1)
+		ft_memdel((void **)&src);
 	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 18:05:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/11 15:22:39 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/14 16:45:59 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int main(void)
 	a = (int)b;
 	t[0] = b;
 	printf("le vrai :");
-	i = printf("{%010d}", 42);
+	i = printf("{%050.2s}", NULL);
 	printf("\ni_vrai = %d\n", i);
 	ft_putstr("le mien :");
-	j = ft_printf("{%010d}", 42);
+	j = ft_printf("{%050.2s}", NULL);
 	ft_putchar('\n');
 	ft_putstrnbr("i_mien =", j);
 	//ft_putchar('\n');

@@ -6,7 +6,7 @@
 #    By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/09 15:34:20 by tferrari          #+#    #+#              #
-#    Updated: 2017/03/13 15:47:58 by tferrari         ###   ########.fr        #
+#    Updated: 2017/03/15 14:20:47 by tferrari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ all : $(NAME)
 
 $(NAME): $(LFT) $(OBJS)
 	@cp $(LFT) $(NAME)
-	@ar rcs $(NAME) $@ $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 	@echo "Compilation de libftprintf.a OK"
 
 libft: $(LFT)
