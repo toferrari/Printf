@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 18:31:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 14:03:11 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:17:43 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int	ft_call_arg2(va_list *arg, char **str, t_print ptf)
 		return (ft_flag_wchr(ptf, (wchar_t)va_arg(*arg, int), str));
 	else if (ptf.c == 'c')
 		return (ft_flag_chr(ptf, (char)va_arg(*arg, int), str));
+	else if (ptf.c == 'b')
+		return (ft_flag_b(ptf, va_arg(*arg, unsigned int), str));
 	return (0);
 }
 

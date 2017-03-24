@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:18:50 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 17:56:50 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:29:43 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int			ft_flag_c_null(t_print ptf, char **format, char **str)
 	c = (*format)[-1];
 	if (ptf.accuracy > 1 || ptf.zero > 1)
 		len = (ptf.zero > ptf.accuracy) ? ptf.zero : ptf.accuracy;
-	ft_realloc_adr_p(str, len, ptf.ret);
+	if (ft_realloc_adr_p(str, len, ptf.ret) == 0)
+		return (0);
 	if (ptf.moins == 1)
 	{
 		*str = ft_strnccat(*str, c, 1);

@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 21:17:27 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 18:22:58 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdarg.h>
 # include <wchar.h>
 # include <stdint.h>
+
+# define malloc(x) null
 
 typedef	struct	s_struct
 {
@@ -36,6 +38,7 @@ typedef	struct	s_struct
 	int			color;
 	char		*tmp;
 	wchar_t		chr;
+	int			i_tmp;
 
 }				t_print;
 
@@ -70,5 +73,6 @@ int				ft_flag_wstr(t_print ptf, wchar_t *src, char **str);
 char			*ft_wchar_to_char(wchar_t c, char *dest);
 int				ft_flag_color(char **str, t_print *ptf, char **format);
 void			ft_flag(char ***format, t_print *s_ptf);
+int				ft_flag_b(t_print ptf, unsigned int nb, char **str);
 
 #endif

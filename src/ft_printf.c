@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:23:10 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 21:18:17 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 18:47:15 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	ft_0_pourcent(char **str, char *format, int ret)
 
 	i = 0;
 	len = ft_strlen(format);
-	ft_realloc_adr_p(str, len, ret);
+	if (ft_realloc_adr_p(str, len, ret) == 0)
+		return (0);
 	*str = ft_strcat_p(*str, format, ret);
 	return (len);
 }
@@ -37,7 +38,8 @@ static int	ft_parse(char *format, va_list *arg, int ret, char **str)
 		return (ret += ft_0_pourcent(str, format, ret));
 	if (format[i] != '%')
 	{
-		ft_realloc_adr_p(str, i = ft_strclen(format, '%'), ret);
+		if (ft_realloc_adr_p(str, i = ft_strclen(format, '%'), ret) == 0)
+			return (0);
 		*str = ft_strccat_p(*str, format, '%', ret);
 		ret += i;
 	}

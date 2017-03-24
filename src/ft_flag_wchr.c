@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 14:05:12 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 18:16:27 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ int			ft_flag_wchr(t_print ptf, wchar_t c, char **str)
 	int		len;
 
 	chr_len = ft_wchar_len(c);
-	dest = ft_strnew(chr_len);
 	len = ft_convert_len_acc(ptf, chr_len);
-	ft_realloc_adr_p(str, chr_len + len, ptf.ret);
+	if (ft_realloc_adr_p(str, chr_len + len, ptf.ret) == 0 ||
+	!(dest = ft_strnew(chr_len)))
+		return (0);
 	dest = ft_wchar_to_char(c, dest);
 	ptf.chr = c;
 	if (ptf.moins == 1)

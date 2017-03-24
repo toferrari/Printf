@@ -6,12 +6,12 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 18:05:31 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/14 16:45:59 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 18:40:51 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "libft.h"
+#include "include/libft.h"
 #include "include/ft_printf.h"
 #include <limits.h>
 #include <wchar.h>
@@ -21,6 +21,7 @@
 int main(void)
 {
 	int i ;
+	//setlocale (LC_ALL, "");
 	int j = 0;
 	unsigned int l = 39;
 	//short s = 9888888888;
@@ -29,7 +30,7 @@ int main(void)
 	float f = 10.2;
 	//unsigned long long ULLONG_MAX = 18446744073709551615;
 	int64_t u = 5;
-	char t[50];
+	char t[50] = "salut";
 	//char c = 'f';
 
 	//t = ft_strdup("salut tu vas bien?");
@@ -42,10 +43,10 @@ int main(void)
 	a = (int)b;
 	t[0] = b;
 	printf("le vrai :");
-	i = printf("{%050.2s}", NULL);
+	i = printf("%10s", "salut");
 	printf("\ni_vrai = %d\n", i);
 	ft_putstr("le mien :");
-	j = ft_printf("{%050.2s}", NULL);
+	j = ft_printf("%10s", "salut");
 	ft_putchar('\n');
 	ft_putstrnbr("i_mien =", j);
 	//ft_putchar('\n');

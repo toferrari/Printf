@@ -6,7 +6,7 @@
 #    By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/09 15:34:20 by tferrari          #+#    #+#              #
-#    Updated: 2017/03/15 14:20:47 by tferrari         ###   ########.fr        #
+#    Updated: 2017/03/24 17:19:06 by tferrari         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRC_FILE =	ft_call_arg.c ft_convert_signe.c ft_wchar_to_char.c ft_flag.c \
 			ft_flag_octal.c ft_flag_pourcent.c ft_flag_str.c ft_flag_u.c \
 			ft_parse_flag.c ft_flag_llhexa.c ft_flag_c_null.c ft_flag_chr.c \
 			ft_flag_wchr.c ft_flag_wstr.c ft_flag_hhd.c ft_flag_llo.c \
-			ft_flag_p.c ft_printf.c
+			ft_flag_p.c ft_printf.c ft_flag_b.c
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILE))
 

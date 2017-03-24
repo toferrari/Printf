@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/09 13:55:43 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 18:35:34 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,18 @@ int			ft_flag_wstr(t_print ptf, wchar_t *src, char **str)
 
 	if (!src)
 	{
-		ft_realloc_adr_p(str, 6, ptf.ret);
-		*str = ft_strcat(*str, "(null)");
-		return (6);
+		dest = ft_strnew(6);
+		ret = ft_convert_len_acc(ptf, 6);
+		ft_realloc_adr_p(str, ret, ptf.ret);
+		dest = ft_strcat(dest, "(null)");
 	}
-	ret = ft_convert_len_acc(ptf, ft_wstr_len(src));
-	ft_realloc_adr_p(str, ret, ptf.ret);
-	dest = ft_strnew(ft_wstr_len(src));
-	ft_dest(&ptf, src, &dest);
+	else
+	{
+		ret = ft_convert_len_acc(ptf, ft_wstr_len(src));
+		ft_realloc_adr_p(str, ret, ptf.ret);
+		dest = ft_strnew(ft_wstr_len(src));
+		ft_dest(&ptf, src, &dest);
+	}
 	len = ft_strlen(dest);
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, dest, len);

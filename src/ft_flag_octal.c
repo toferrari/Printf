@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 14:09:46 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/08 18:16:16 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 18:11:00 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ int			ft_flag_octal(t_print ptf, unsigned int nb, char **str)
 	int i;
 
 	len = ft_convert_len_acc(ptf, nb);
-	ptf.tmp = ft_itoa_base(nb, 8);
-	ft_realloc_adr_p(str, len, ptf.ret);
+	if (ft_realloc_adr_p(str, len, ptf.ret) == 0 ||
+	!(ptf.tmp = ft_itoa_base(nb, 8)))
+		return (0);
 	if (ptf.accuracy == 0 && ptf.zero == 0 && ptf.htag == 1 && nb != 0)
 		len++;
 	i = ptf.htag;

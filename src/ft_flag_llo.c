@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:40:56 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/08 18:14:59 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 18:04:38 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ int			ft_flag_llo(t_print ptf, uint64_t nb, char **str)
 	int i;
 
 	len = ft_convert_len_acc(ptf, nb);
-	ptf.tmp = ft_itoa_base64(nb, 8);
-	ft_realloc_adr_p(str, len, ptf.ret);
+	if (ft_realloc_adr_p(str, len, ptf.ret) == 0 ||
+	!(ptf.tmp = ft_itoa_base64(nb, 8)))
+		return (0);
 	i = ptf.htag;
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, nb, i);

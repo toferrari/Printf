@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/13 18:40:56 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/08 18:00:36 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/24 17:47:39 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ int			ft_flag_hexa(t_print ptf, unsigned int nb, char **str)
 	int ret;
 
 	len_i[0] = ft_intlen_base(nb, 16);
-	ptf.tmp = ft_itoa_base(nb, 16);
 	ret = ft_convert_len_acc(ptf, nb, len_i[0]);
-	ft_realloc_adr_p(str, ret, ptf.ret);
+	if (ft_realloc_adr_p(str, ret, ptf.ret) == 0 ||
+	!(ptf.tmp = ft_itoa_base(nb, 16)))
+		return (0);
 	len_i[1] = (ptf.htag == 1) ? 2 : 0;
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, nb, len_i);
