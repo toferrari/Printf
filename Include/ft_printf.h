@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 17:37:00 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/24 18:22:58 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/25 13:48:13 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <stdarg.h>
 # include <wchar.h>
 # include <stdint.h>
-
-# define malloc(x) null
 
 typedef	struct	s_struct
 {
