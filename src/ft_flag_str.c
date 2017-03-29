@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/14 16:41:02 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/28 21:37:54 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int			ft_flag_str(t_print ptf, char *src, char **str)
 	}
 	lenstr = ft_strlen(src);
 	len = ft_convert_len_acc(ptf, src);
-	ft_realloc_adr_p(str, len, ptf.ret);
+	if (!ft_realloc_adr_p(str, len, ptf.ret))
+		return (0);
 	if (ptf.moins == 1)
 		ft_moin_on(str, ptf, lenstr, src);
 	else

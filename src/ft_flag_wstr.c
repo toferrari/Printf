@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/24 18:35:34 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/28 21:57:56 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_convert_len_acc(t_print ptf, int len)
 	return (ret);
 }
 
-static void	ft_dest(t_print *ptf, wchar_t *src, char **dest)
+static int	ft_dest(t_print *ptf, wchar_t *src, char **dest)
 {
 	int		i;
 	int		len;
@@ -40,7 +40,8 @@ static void	ft_dest(t_print *ptf, wchar_t *src, char **dest)
 	len = 0;
 	while (src[i])
 	{
-		tmp = ft_strnew(ft_wchar_len(src[i]));
+		if (!(tmp = ft_strnew(ft_wchar_len(src[i]))))
+			return (0);
 		tmp = ft_wchar_to_char(src[i], tmp);
 		*dest = ft_strcat(*dest, tmp);
 		ft_memdel((void **)&tmp);
@@ -53,6 +54,7 @@ static void	ft_dest(t_print *ptf, wchar_t *src, char **dest)
 		len += ft_wchar_len(src[i]);
 		i++;
 	}
+	return (1);
 }
 
 static void	ft_moin_on(char **str, t_print ptf, char *dest, int len)
@@ -97,17 +99,17 @@ int			ft_flag_wstr(t_print ptf, wchar_t *src, char **str)
 
 	if (!src)
 	{
-		dest = ft_strnew(6);
 		ret = ft_convert_len_acc(ptf, 6);
-		ft_realloc_adr_p(str, ret, ptf.ret);
+		if (!(dest = ft_strnew(6)) || ft_realloc_adr_p(str, ret, ptf.ret) == 0)
+			return (0);
 		dest = ft_strcat(dest, "(null)");
 	}
 	else
 	{
 		ret = ft_convert_len_acc(ptf, ft_wstr_len(src));
-		ft_realloc_adr_p(str, ret, ptf.ret);
-		dest = ft_strnew(ft_wstr_len(src));
-		ft_dest(&ptf, src, &dest);
+		if (!ft_realloc_adr_p(str, ret, ptf.ret) ||
+		!(dest = ft_strnew(ft_wstr_len(src))) || !ft_dest(&ptf, src, &dest))
+			return (0);
 	}
 	len = ft_strlen(dest);
 	if (ptf.moins == 1)

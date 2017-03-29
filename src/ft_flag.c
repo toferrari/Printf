@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 13:40:04 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/28 18:12:41 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/28 21:21:07 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,11 @@ static void	ft_suite(char ***format, t_print *s_ptf, int i)
 	int j;
 
 	j = 0;
-	while (!(ft_isdigit((**format)[j])))
+	while ((**format)[j] && ((**format)[j] == '#' || (**format)[j] == '-' ||
+	(**format)[j] == '+' || (**format)[j] == ' '))
 		j++;
-	if (((**format)[j] == '0' && (**format)[i] != '.' && s_ptf->moins == 0))
+	if (((**format)[j] == '0' && (**format)[i] != '.' && s_ptf->accuracy == 0 &&
+	s_ptf->moins == 0))
 	{
 		s_ptf->accuracy = s_ptf->zero;
 		s_ptf->zero = 0;

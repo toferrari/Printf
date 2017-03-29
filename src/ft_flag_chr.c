@@ -6,7 +6,7 @@
 /*   By: tferrari <tferrari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/11 16:22:38 by tferrari          #+#    #+#             */
-/*   Updated: 2017/03/24 17:30:28 by tferrari         ###   ########.fr       */
+/*   Updated: 2017/03/28 21:20:25 by tferrari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_moin_off(char **str, t_print ptf, char c)
 		ptf.zero - ptf.accuracy - 1);
 	else
 		*str = ft_strlnccat(*str, ' ', &ptf.ret, ptf.zero);
-	if (ptf.accuracy > 0 && c && ptf.bool_acc == 0)
+	if (ptf.accuracy > 0 && ptf.bool_acc == 0)
 	{
 		*str = ft_strlnccat(*str, '0', &ptf.ret, ptf.accuracy - 1);
 		*str = ft_strlnccat(*str, c, &ptf.ret, 1);
@@ -45,7 +45,7 @@ int			ft_flag_chr(t_print ptf, char c, char **str)
 {
 	int len;
 
-	if (!c && ptf.zero == 0)
+	if (!c && ptf.zero == 0 && ptf.accuracy == 0)
 		return (1);
 	len = ft_convert_len_acc(ptf);
 	if (ft_realloc_adr_p(str, len, ptf.ret) == 0)
